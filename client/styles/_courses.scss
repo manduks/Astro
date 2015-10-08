@@ -1,0 +1,28 @@
+.astro_courses_list{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  .astro_course_item_wrapper{
+    //border: 1px solid red;
+    width: 700px;
+    display: flex;
+    flex-direction: row;
+    .astro_course_item_info{
+      width: 50%;
+      .astro_course_item_title{
+        font-family: Montserrat-Bold;
+        font-size: 24px;
+        color: $dark;
+        line-height: 34px;
+      }
+    }
+    .astro_course_item_img{
+      width: 50%;
+      img{
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}

@@ -1,4 +1,4 @@
-.astro-header{
+.astro_header{
   background-image: url(img/hero.png) ;
   background: linear-gradient( rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1) ), url('img/hero.png');
   background-size: 100% 683px;
@@ -9,14 +9,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  .astro-legend{
+  .astro_legend{
     font-family: Montserrat-Bold;
     font-size: 46px;
     color: #FFFFFF;
     line-height: 57px;
     //margin-bottom: 50px
   }
-  .astro-techs{
+  .astro_techs{
     margin-top: 100px
   }
   .astro_button{

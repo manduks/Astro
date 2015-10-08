@@ -2,15 +2,18 @@ Landing = React.createClass({
   render() {
     return (
       <div>
-          <header className="astro-header">
+          <header className="astro_header">
             <section>
-              <span className="astro-legend">APRENDE LAS MEJORES LIBRERÍAS</span>
+              <span className="astro_legend">APRENDE LAS MEJORES LIBRERÍAS</span>
               <Button size="large" text="Entrar"/>
-              <div className="astro-techs">
+              <div className="astro_techs">
                 <img src="img/techs.png" alt="liberías"></img>
               </div>
             </section>
           </header>
+          <section>
+            <CoursesList/>
+          </section>
       </div>
     )
   }
