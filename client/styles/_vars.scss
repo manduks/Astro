@@ -1,0 +1,13 @@
+$light: #FFF;
+$dark: #000000;
+
+$primary: #D7274D; //redish
+$secondary: #343358; //purpleish
+
+$footer: rgba(0,0,0,0.05);
+
+$online: #B8E986;
+$offline: #D8D8D8;
+$busy: #F5A623;
+$idle: lighten($busy, 15%);
+$idle-border: lighten($busy, 15%);

@@ -1,0 +1,44 @@
+.astro_button{
+  background: $primary;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $light;
+  span{
+    font-family: Montserrat-Bold;
+    font-size: 24px;
+    color: inherit;
+    line-height: 29px;
+  }
+  &:hover{
+    cursor: pointer;
+    background-color: darken($primary, 4);
+  }
+}
+.small{
+  //opacity: 0.3;
+  border: 1px solid #FFFFFF;
+  border-radius: 50px;
+  width: 100px;
+  height: 36px;
+  span{
+    font-size: 11px;
+    line-height: 14px;
+  }
+}
+.medium{
+  border: 1px solid #FFFFFF;
+  width: 180px;
+  height: 56px;
+  span{
+    font-family: Montserrat-Bold;
+    font-size: 13px;
+    color: #FFFFFF;
+    line-height: 16px;
+  }
+}
+.large {
+  width: 326px;
+  height: 63px;
+}
