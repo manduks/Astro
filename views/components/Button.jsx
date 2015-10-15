@@ -6,7 +6,7 @@ Button = React.createClass({
   render() {
     var className = "astro_button " + this.props.size
     return (
-      <div className={className} style={this.props.style} onClick={this.props.handleOnClick}>
+      <div className={className} style={this.props.style} onClick={this.props.onClick}>
           <span>{this.props.text}</span>
       </div>
     )
