@@ -1,7 +1,7 @@
 Toolbar = React.createClass({
   render() {
     return (
-      <div className="astro_toolbar">
+      <header className="astro_toolbar">
         <div className="astro_toolbar-inner">
             <div className="astro_toolbar_brand">
               <span className="astro_toolbar_options_menu"><img src="img/menu.png"></img></span>
@@ -13,7 +13,7 @@ Toolbar = React.createClass({
               <span className="astro_toolbar_options_avatar"><img src="img/react.png"></img></span>
             </div>
         </div>
-      </div>
+      </header>
     )
   }
 });
