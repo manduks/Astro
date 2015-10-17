@@ -1,0 +1,65 @@
+.astro_toolbar{
+  height: 60px;
+  left: 0;
+  top: 0;
+  background-color: $primary;
+  position: fixed;
+  width: 100%;
+  span{
+    &:hover{
+      cursor: pointer;
+    }
+  }
+  .astro_toolbar-inner{
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    height: 60px;
+    margin: 0 30px 0 30px;
+    .astro_toolbar_brand{
+      align-items: center;
+      display: flex;
+      .astro_toolbar_name{
+        font-family: Montserrat-Bold;
+        font-size: 10px;
+        color: $light;
+        letter-spacing: 0.5px;
+        line-height: 13px;
+      }
+      .astro_toolbar_options_menu{
+        margin-right: 50px;
+        img{
+          width: 25px;
+          height: 25px;
+        }
+      }
+    }
+    .astro_toolbar_logo{
+      img{
+        width: 42px;
+        position: fixed;
+        top: 7px;
+        left: 50%;
+        margin-left: -21px;
+      }
+    }
+    .astro_toolbar_options{
+      align-items: center;
+      display: flex;
+      .astro_toolbar_options_avatar{
+        margin-left: 32px;
+        img{
+          width: 30px;
+          height: 30px;
+          border-radius: 30px;
+        }
+      }
+      .astro_toolbar_options_search{
+        img{
+          width: 25px;
+          height: 25px;
+        }
+      }
+    }
+  }
+}

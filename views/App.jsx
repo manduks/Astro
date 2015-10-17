@@ -2,7 +2,10 @@ App = React.createClass({
   render() {
     return (
       <div>
-        App layout
+        <Toolbar/>
+        <section className="astro_main_container">
+          <CoursesList/>
+        </section>
       </div>
     )
   }

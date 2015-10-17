@@ -18,6 +18,7 @@ Meteor.startup(function() {
       <Route component={Layout}>
         <Router name="landing" component={Landing} path="/" />
         <Router name="app" component={App} path="/app"/>
+        <Router name="courses" component={App} path="/courses"/>
         <Route path="*" component={NotFound} />
       </Route>
     </Router>

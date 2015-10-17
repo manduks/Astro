@@ -21,11 +21,14 @@ Landing = React.createClass({
     )
   },
   handleLogin() {
+    var me = this;
     React.render(
       <Login/>,
-      this.getEl('dialog')
+      me.getEl('dialog')
     );
-     this.showModal()
+    Meteor.setTimeout(function(){
+      me.showModal()
+    }, 100);
   }
 });
 /*
