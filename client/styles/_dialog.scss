@@ -1,16 +1,4 @@
-/**
- * De-emphasizing by blurring (AND dimming)
- */
-main {
-	transition: .6s;
-	background: white;
-}
-
-main.de-emphasized {
-	-webkit-filter: blur(3px);
-	filter: blur(3px);
-}
-
+/**Modal**/
 dialog {
 	position: fixed;
 	top: 50%;
@@ -24,9 +12,7 @@ dialog {
 	box-shadow: 0 .2em .5em rgba(0,0,0,.5),
 	            0 0 0 100vmax rgba(0,0,0,.2);
 	background-color:#FFF;
-
   display: flex;
-  //align-items: center;
   justify-content: center;
 }
 

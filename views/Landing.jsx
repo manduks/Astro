@@ -2,7 +2,6 @@ Landing = React.createClass({
   mixins: [DOM],
   render() {
     return (
-      <div>
         <main>
             <header className="astro_header">
               <section>
@@ -13,11 +12,10 @@ Landing = React.createClass({
                 </div>
               </section>
             </header>
-            <section>
+            <section className="astro_main_container">
               <CoursesList/>
             </section>
         </main>
-      </div>
     )
   },
   handleLogin() {
