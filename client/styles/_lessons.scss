@@ -1,0 +1,45 @@
+.astro_lessons_layout{
+  font-family: Montserrat-Bold;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  .astro_lesson_course_info{
+    width: 415px;
+    border-right: 3px solid $footer;
+    display: flex;
+    align-items: center;
+    .astro_lesson_course_info_container{
+      height: 220px;
+      width: 160px;
+      margin: 246px 165px auto 100px;
+      .astro_lesson_course_info_container_title{
+        font-size: 46px;
+        color: $primary;
+        line-height: 57px;
+      }
+      p{
+        opacity: 0.6;
+        font-family: Montserrat-Regular;
+        font-size: 20px;
+        color: $dark;
+        line-height: 24px;
+      }
+      .astro_lesson_course_info_container_duration{
+        opacity: 0.5;
+        font-size: 14px;
+        color: $primary;
+        line-height: 18px;
+      }
+    }
+  }
+  .astro_lessons_list{
+    margin-left: -30px;
+    .astro_lesson_item_wrapper{
+      border: 1px solid $footer;
+      display: block;
+      margin-top: 60px;
+      width: 807px;
+      height: 200px;
+    }
+  }
+}
