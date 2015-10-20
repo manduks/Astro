@@ -8,6 +8,7 @@
     border-right: 3px solid $footer;
     display: flex;
     align-items: center;
+    z-index: 2;
     .astro_lesson_course_info_container{
       height: 220px;
       width: 160px;
@@ -33,13 +34,60 @@
     }
   }
   .astro_lessons_list{
-    margin-left: -30px;
+    margin-left: -23px;
     .astro_lesson_item_wrapper{
-      border: 1px solid $footer;
+      border: 1px solid $light;
       display: block;
       margin-top: 60px;
       width: 807px;
       height: 200px;
+      display: flex;
+      justify-content: space-between;
+      &:hover{
+        border: 1px solid lighten($primary, 20%);
+        cursor: pointer;
+      }
+    }
+    .astro_lesson_item_wrapper-inner{
+      width: 462px;
+      height: 132px;
+      display: flex;
+      margin: 49px auto 19px 0px;
+      .astro_lesson_item_wrapper-inner-icon{
+        z-index: 3;
+        img{
+          width: 41px;
+          height: 41px;
+        }
+      }
+      .astro_lesson_item_wrapper-inner-info{
+        margin-left: 28px;
+        .astro_lesson_item_wrapper-inner-info-header{
+          display: flex;
+          justify-content: space-between;
+          span{
+            font-size: 11px;
+            color: $primary;
+            line-height: 14px;
+            text-transform: uppercase;
+          }
+          span:last-child{
+            opacity: 0.5;
+            color: $dark;
+          }
+        }
+        .astro_lesson_item_wrapper-inner-info-description{
+          font-size: 20px;
+          color: $dark;
+          line-height: 30px;
+        }
+      }
+    }
+    .astro_lesson_item_wrapper-img{
+        img{
+          width: 243px;
+          height: 200px;
+        }
     }
   }
 }

@@ -5,7 +5,7 @@
   justify-content: center;
   .astro_course_item_wrapper{
     border: 2px solid $footer;
-    width: 600px;
+    //width: 600px;
     width: 49.4%;
     display: flex;
     margin: 2px;
@@ -58,7 +58,6 @@
       }
     }
     &:hover{
-      //border: 2px solid #4CC1FC ;//lighten($primary, 10%);
       border: 2px solid lighten($primary, 10%);
       cursor: pointer;
     }
