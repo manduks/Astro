@@ -11,9 +11,9 @@ LessonItem = React.createClass({
               <span>{this.props.lesson.title}</span>
               <span>{this.props.lesson.duration}</span>
             </div>
-            <span className="astro_lesson_item_wrapper-inner-info-description">
+            <strong className="astro_lesson_item_wrapper-inner-info-description">
               {this.props.lesson.description}
-            </span>
+            </strong>
           </div>
         </section>
         <div className="astro_lesson_item_wrapper-img">

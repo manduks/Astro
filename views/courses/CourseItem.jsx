@@ -3,7 +3,7 @@ CourseItem = React.createClass({
     return (
       <div className="astro_course_item_wrapper">
         <div className="astro_course_item_info">
-          <span className="astro_course_item_title">{this.props.course.title}</span>
+          <strong className="astro_course_item_title">{this.props.course.title}</strong>
           <section className="astro_course_item_bottom_info">
             <span className="astro_course_item_bottom_info_lessons"><img src="img/lessons.png"></img>{this.props.course.lessons}</span>
             <span className="astro_course_item_bottom_info_duration"><img src="img/clock.png"></img>{this.props.course.totalTime}</span>
