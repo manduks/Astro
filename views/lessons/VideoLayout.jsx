@@ -18,12 +18,22 @@ VideoLayout = React.createClass({
             <span>23 COMMENTS</span>
             <ul>
               <li>
-                Newest
+                Nuevos
               </li>
               <li className="astro_video_comments_info_selected">
-                Oldest
+                Viejos
               </li>
             </ul>
+          </div>
+          <CommentsList/>
+          <div className="astro_comments_form">
+            <div className="astro_comments_form_avatar">
+              <img src="img/es6.png"></img>
+            </div>
+            <div className="astro_comments_form_textfield">
+              <input type="text" name="comment"> </input>
+            </div>
+            <Button text="Enviar" size="medium"/>
           </div>
         </section>
       </div>
