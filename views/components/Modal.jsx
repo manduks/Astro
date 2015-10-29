@@ -13,7 +13,7 @@ Modal = React.createClass({
     style['marginTop']  = -(this.props.height / 2); /* half of the height */
 
     return (
-      <dialog onClick={this.handleOnClick} style={style}></dialog>
+      <dialog style={style}>  </dialog>
     )
   },
   handleOnClick() {

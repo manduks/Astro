@@ -5,6 +5,7 @@ DOM = {
   showModal() {
     this.getEl('dialog').setAttribute('open', '');
     this.getEl('main').classList.add('de-emphasized');
+    this.getEl('main').addEventListener("click", this.hideModal);
   },
   hideModal() {
     var dialog = this.getEl('dialog'),
@@ -16,5 +17,6 @@ DOM = {
   		dialog.removeAttribute('open');
   	}
   	main.classList.remove('de-emphasized');
+    this.getEl('main').removeEventListener("click", this.hideModal);
   }
 }
