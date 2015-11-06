@@ -19,13 +19,13 @@ Landing = React.createClass({
     )
   },
   handleLogin() {
-    var me = this;
-    React.render(
+    var self = this;
+    ReactDOM.render(
       <Login/>,
-      me.getEl('dialog')
+      self.getEl('dialog')
     );
     Meteor.setTimeout(function(){
-      me.showModal()
+      self.showModal();
     }, 100);
   }
 });

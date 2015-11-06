@@ -17,3 +17,5 @@ ecmascript              # Enable ECMAScript2015+ syntax in app code
 react
 reactrouter:react-router
 fourseven:scss
+accounts-github
+service-configuration

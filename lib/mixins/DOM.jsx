@@ -18,5 +18,8 @@ DOM = {
   	}
   	main.classList.remove('de-emphasized');
     this.getEl('main').removeEventListener("click", this.hideModal);
+  },
+  history() {
+    return window.browserHistory;
   }
 }
