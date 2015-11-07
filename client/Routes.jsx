@@ -1,7 +1,7 @@
 const {
   Router,
   Route,
-  IndexRoute,
+  //IndexRoute,
   history
 } = ReactRouter;
 
@@ -30,11 +30,9 @@ Routes = React.createClass({
   }
 });
 
-
 Meteor.startup(function() {
     var app = document.createElement('div');
     app.id = 'App';
     document.body.appendChild(app);
-    //ReactDOM.render(AppRoutes, app);
     ReactDOM.render(<Routes/>, app);
 });

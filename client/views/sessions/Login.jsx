@@ -19,7 +19,7 @@ Login = React.createClass({
     Meteor.loginWithGithub({requestPermissions: ['user', 'email']}, this.login);
   },
   loginWithTwitter() {
-    alert('twitter');
+    Meteor.loginWithTwitter({}, this.login);
   },
   login(err) {
     if (err){
