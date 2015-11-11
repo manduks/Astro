@@ -1,7 +1,7 @@
 const {
   Router,
   Route,
-  //IndexRoute,
+  IndexRoute,
   history
 } = ReactRouter;
 
@@ -15,6 +15,22 @@ Routes = React.createClass({
     return {};
   },
   render: function() {
+    return (
+      <Router history={browserHistory}>
+        <Route path="/" component={Layout}>
+          //<Router name="landing" component={Landing} path="/" />
+          <IndexRoute component={Landing}/>
+        </Route>
+        <Route path="/app" component={Authenticate}>
+          <IndexRoute component={App}/>
+          <Route name="lessons" component={LessonsLayout} path="/lessons"/>
+          <Route name="video" component={VideoLayout} path="/video"/>
+        </Route>
+        <Route path="*" component={NotFound} />
+      </Router>
+    );
+  },
+  renderrrr: function() {
     return (
       <Router history={browserHistory}>
         <Route component={Layout}>

@@ -29,8 +29,3 @@ Landing = React.createClass({
     }, 100);
   }
 });
-/*
-<Button size="large"/>
-<Button size="small"/>
-<Button size="medium" style={{backgroundColor:'#000'}}/>
-*/

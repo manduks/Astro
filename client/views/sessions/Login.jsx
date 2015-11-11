@@ -1,6 +1,11 @@
 
 Login = React.createClass({
   mixins: [DOM],
+  getMeteorData: function() {
+    return {
+      isAuthenticated: Meteor.userId() !== null
+    }
+  },
   render() {
     return (
       <div className="astro_login">
@@ -26,6 +31,6 @@ Login = React.createClass({
       return console.log(err);
     }
     this.hideModal();
-    return this.history().pushState(null, "/app");
+    this.history().pushState(null, "/app");
   }
 });
