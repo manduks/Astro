@@ -59,7 +59,7 @@
         margin-left: 32px;
 
         img {
-          border: 3px solid $footer;
+          //border: 1px solid $footer;
           border-radius: 30px;
           width: 30px;
           height: 30px;
@@ -67,8 +67,7 @@
 
         &:hover {
           ul {
-            z-index: 10;
-            //opacity: 0;
+            z-index: 5;
             display: block;
           }
         }
@@ -87,7 +86,7 @@
           li {
             display: block;
             font-size: 16px;
-            font-family: Montserrat-Bold;
+            font-family: Montserrat;
             color: $dark;
             padding: 15px;
 

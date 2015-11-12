@@ -13,14 +13,12 @@ Toolbar = React.createClass({
             <span className="astro_toolbar_logo"><img src="img/logo.png"></img></span>
             <div className="astro_toolbar_options">
               <span className="astro_toolbar_options_search"><img src="img/search.png"></img></span>
-              <span className="astro_toolbar_options_avatar">
-                
+              <span className="astro_toolbar_options_avatar">                
                   <img src={this.props.avatar}></img>
                   <ul>
                     <li>Perfil</li>
-                    <li>Cerrar Sesión</li>
+                    <li onClick={this.props.onLogout}>Cerrar Sesión </li>
                   </ul>
-
               </span>
             </div>
         </div>

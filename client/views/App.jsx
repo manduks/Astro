@@ -1,5 +1,5 @@
 App = React.createClass({
-  mixins: [ReactMeteorData],
+  mixins: [ReactMeteorData, ReactRouter.History],
   getMeteorData: function() {
     var sub = Meteor.subscribe("users");
     return {
@@ -7,19 +7,34 @@ App = React.createClass({
       usersLoading: !sub.ready()
     }
   },
+  componentWillMount: function() {
+    if (!this.data.currentUser) {
+      this.history.pushState(null, '/');
+    }
+  },
+  componentDidUpdate: function(prevProps, prevState) {
+    if (!this.data.currentUser) {
+      this.history.pushState(null, '/');
+    }
+  },
   render() {
-    // Show a loading indicator if data is not ready
+    let avatar = null;
     if (this.data.usersLoading) {
       return <div></div>;
     }
-    console.log(this.data);
+    
+    avatar =  (this.data.currentUser && this.data.currentUser.avatar) || '';
+    
     return (
       <div className="astro_main_content">
-        <Toolbar avatar={this.data.currentUser.avatar}/>
+        <Toolbar avatar={avatar} onLogout={this.onLogout}/>
         <section className="astro_main_container">
           <CoursesList/>
         </section>
       </div>
     )
+  },
+  onLogout: function  () {
+    Meteor.logout();
   }
 });
