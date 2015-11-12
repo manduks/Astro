@@ -1,41 +1,48 @@
-.astro_toolbar{
+.astro_toolbar {
   height: 60px;
   left: 0;
   top: 0;
   background-color: $primary;
   position: fixed;
   width: 100%;
-  span{
-    &:hover{
+
+  span {
+    &:hover {
       cursor: pointer;
     }
   }
-  .astro_toolbar-inner{
+
+  .astro_toolbar-inner {
     align-items: center;
     display: flex;
     justify-content: space-between;
     height: 60px;
     margin: 0 30px 0 30px;
-    .astro_toolbar_brand{
+
+    .astro_toolbar_brand {
       align-items: center;
       display: flex;
-      .astro_toolbar_name{
+
+      .astro_toolbar_name {
         font-family: Montserrat-Bold;
         font-size: 10px;
         color: $light;
         letter-spacing: 0.5px;
         line-height: 13px;
       }
-      .astro_toolbar_options_menu{
+
+      .astro_toolbar_options_menu {
         margin-right: 50px;
-        img{
+
+        img {
           width: 25px;
           height: 25px;
         }
       }
     }
-    .astro_toolbar_logo{
-      img{
+
+    .astro_toolbar_logo {
+      img {
         width: 42px;
         position: fixed;
         top: 7px;
@@ -43,19 +50,57 @@
         margin-left: -21px;
       }
     }
-    .astro_toolbar_options{
+
+    .astro_toolbar_options {
       align-items: center;
       display: flex;
-      .astro_toolbar_options_avatar{
+
+      .astro_toolbar_options_avatar {
         margin-left: 32px;
-        img{
+
+        img {
+          border: 3px solid $footer;
+          border-radius: 30px;
           width: 30px;
           height: 30px;
-          border-radius: 30px;
+        }
+
+        &:hover {
+          ul {
+            z-index: 10;
+            //opacity: 0;
+            display: block;
+          }
+        }
+
+        ul {
+          display: none;
+          width: 160px;
+          padding: 0px 0px;
+          position: absolute;
+          top: 80%;
+          right: 0px;
+          transition: opacity linear 0.15s;
+          box-shadow: 0px 2px 3px rgba(0,0,0,0.2);
+          background: $light;
+
+          li {
+            display: block;
+            font-size: 16px;
+            font-family: Montserrat-Bold;
+            color: $dark;
+            padding: 15px;
+
+            &:hover {
+              background: lighten($secondary,10%);
+              color: $light;
+            }
+          }
         }
       }
-      .astro_toolbar_options_search{
-        img{
+
+      .astro_toolbar_options_search {
+        img {
           width: 25px;
           height: 25px;
         }
