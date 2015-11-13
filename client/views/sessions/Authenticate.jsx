@@ -22,7 +22,7 @@ Authenticate = React.createClass({
     Meteor.logout();
   },
   onProfile () {
-    this.history.pushState(null, '/profile');
+    this.history.pushState(null,'/profile');
   },
   onAppIndex (){
     this.history.pushState(null, '/app');

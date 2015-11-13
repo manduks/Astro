@@ -17,12 +17,12 @@ function getUserInfo (accessToken) {
     headers: {
       'User-Agent': 'Meteor'
     },
-
     params: {
       access_token: accessToken
     }
   });
-  return _.pick(result.data, 'login', 'email', 'avatar_url');
+
+  return _.pick(result.data, 'login', 'email', 'avatar_url', 'name');
 }
 
 Accounts.onCreateUser(function(options, user) {
@@ -32,7 +32,6 @@ Accounts.onCreateUser(function(options, user) {
       user.email = user.profile.email;
       user.avatar = user.profile.avatar_url;
     }
-  console.log(user);
     if (user.services['twitter']) {
         user.profile = options.profile;
         user.email = user.services['twitter'].screenName;
