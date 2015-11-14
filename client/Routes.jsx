@@ -17,14 +17,19 @@ Routes = React.createClass({
   render: function() {
     return (
       <Router history={browserHistory}>
-        <Route path="/" component={Layout}>
+        <Route path="/" component={HomeLayout}>
           <IndexRoute component={Landing}/>
         </Route>
-        <Route path="/app" component={Authenticate}>
+        <Route path="/app" component={Auth}>
           <IndexRoute component={App}/>
           <Route name="lessons" component={LessonsLayout} path="/lessons"/>
           <Route name="video" component={VideoLayout} path="/video"/>
           <Route name="profile" component={Profile} path="/profile"/>
+        </Route>
+        <Route path="/admin" component={AdminAuth}>
+          <IndexRoute component={AdminApp}/>
+          <Route name="adminCourses" component={AdminApp} path="/admin/courses"/>
+          <Route name="adminUsers" component={AdminApp} path="/admin/users"/>
         </Route>
         <Route path="*" component={NotFound} />
       </Router>

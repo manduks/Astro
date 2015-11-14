@@ -1,11 +1,11 @@
-Authenticate = React.createClass({
+Auth = React.createClass({
   mixins: [ReactMeteorData, ReactRouter.History],
   getMeteorData () {
     var sub = Meteor.subscribe("users");
     return {
       isAuthenticated: Meteor.userId() !== null,
-      currentUser: Meteor.user(),
-      usersLoading: !sub.ready()
+      currentUser    : Meteor.user(),
+      usersLoading   : !sub.ready()
     }
   },
   componentWillMount () {
@@ -18,20 +18,12 @@ Authenticate = React.createClass({
       this.history.pushState(null, '/');
     }
   },
-  onLogout () {
-    Meteor.logout();
-  },
-  onProfile () {
-    this.history.pushState(null,'/profile');
-  },
-  onAppIndex (){
-    this.history.pushState(null, '/app');
-  },
   render: function() {
     let avatar =  (this.data.currentUser && this.data.currentUser.avatar) || '';
+    let isAdmin =  (this.data.currentUser && this.data.currentUser.isAdmin) || false;
     return (
       <div className="astro_main_content">
-        <Toolbar avatar={avatar} onLogout={this.onLogout} onProfile={this.onProfile} onAppIndex={this.onAppIndex}/>
+        <Toolbar avatar={avatar} isAdmin={isAdmin}/>
         {this.props.children}
       </div>
     );

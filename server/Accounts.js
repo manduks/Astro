@@ -37,5 +37,6 @@ Accounts.onCreateUser(function(options, user) {
         user.email = user.services['twitter'].screenName;
         user.avatar = user.services['twitter'].profile_image_url;
     }
+    user.isAdmin = user.email === 'iam@armando.mx';
     return user;
 });

@@ -1,11 +1,5 @@
-
 Login = React.createClass({
   mixins: [DOM],
-  getMeteorData: function() {
-    return {
-      isAuthenticated: Meteor.userId() !== null
-    }
-  },
   render() {
     return (
       <div className="astro_login">
