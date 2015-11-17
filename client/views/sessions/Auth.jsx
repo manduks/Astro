@@ -5,7 +5,7 @@ Auth = React.createClass({
     return {
       isAuthenticated: Meteor.userId() !== null,
       currentUser    : Meteor.user(),
-      usersLoading   : !sub.ready()
+      usersLoader   : !sub.ready()
     }
   },
   componentWillMount () {
@@ -21,6 +21,11 @@ Auth = React.createClass({
   render: function() {
     let avatar =  (this.data.currentUser && this.data.currentUser.avatar) || '';
     let isAdmin =  (this.data.currentUser && this.data.currentUser.isAdmin) || false;
+
+    if (this.usersLoader) {
+      return <Loader></Loader>
+    }
+
     return (
       <div className="astro_main_content">
         <Toolbar avatar={avatar} isAdmin={isAdmin}/>

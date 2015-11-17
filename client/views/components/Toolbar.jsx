@@ -6,12 +6,7 @@ Toolbar = React.createClass({
   },
   onLogout () {
     var self = this;
-    Meteor.logout(function (err) {
-      if (err) {
-        return console.log(err);
-      }
-      self.history.pushState(null,'/');
-    });
+    Meteor.logout();
   },
   onProfile () {
     this.history.pushState(null,'/profile');
@@ -39,8 +34,8 @@ Toolbar = React.createClass({
                   <img src={this.props.avatar}></img>
                   <ul>
                     <li onClick={this.onProfile}>Perfil</li>
-                    <li onClick={this.onLogout}>Cerrar Sesión</li>
                     {addAdminMenu(this.props.isAdmin)}
+                    <li onClick={this.onLogout}>Cerrar Sesión</li>
                   </ul>
               </span>
             </div>

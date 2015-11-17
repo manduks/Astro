@@ -1,13 +1,13 @@
 NotFound = React.createClass({
-  mixins : [ReactRouter.Navigation],
+  mixins : [ReactRouter.History],
   render() {
     return (
-      <div>
+      <div onClick={this.handleBack}>
         Not Found
       </div>
     )
   },
   handleBack() {
-    return this.transitionTo('findevs');
+    this.history.pushState(null, '/app');
   }
 });
