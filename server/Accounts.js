@@ -34,9 +34,10 @@ Accounts.onCreateUser(function(options, user) {
     }
     if (user.services['twitter']) {
         user.profile = options.profile;
-        user.email = user.services['twitter'].screenName;
+        //user.email = user.services['twitter'].screenName;
         user.avatar = user.services['twitter'].profile_image_url;
     }
+    user.name = user.profile.name;
     user.isAdmin = user.email === 'iam@armando.mx';
     return user;
 });

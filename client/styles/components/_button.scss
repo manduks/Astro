@@ -15,6 +15,9 @@
     cursor: pointer;
     background-color: darken($primary, 4);
   }
+  &:active{
+    background-color: darken($primary, 10%);
+  }
 }
 .small{
   //opacity: 0.3;
