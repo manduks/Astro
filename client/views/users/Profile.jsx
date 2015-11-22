@@ -1,5 +1,5 @@
 Profile = React.createClass({
-  mixins: [ReactMeteorData],
+  mixins: [ReactMeteorData, DOM],
   getMeteorData () {
     var sub = Meteor.subscribe("users");
     return {
@@ -8,11 +8,15 @@ Profile = React.createClass({
     }
   },
   updateUserData (e) {
+    const self = this;
     e.preventDefault();
-    if (this.refs.userNameInput.value && this.refs.emailInput.value) {
+    if (self.refs.userNameInput.value && self.refs.emailInput.value) {
+      self.showOperationSpinner();
       Meteor.call('updateUserProfile', {
-            name : this.refs.userNameInput.value,
-            email: this.refs.emailInput.value
+            name : self.refs.userNameInput.value,
+            email: self.refs.emailInput.value
+        }, function () {
+            self.hideOperationSpinner();
         });
     }
   },

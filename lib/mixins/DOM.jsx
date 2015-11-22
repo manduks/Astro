@@ -21,5 +21,30 @@ DOM = {
   },
   history() {
     return window.browserHistory;
+  },
+  showOperationSpinner() {
+    let div = document.getElementById('operation_spinner');
+
+    if (div) {
+      return div.style.display = 'block';
+    }
+
+    div = document.createElement('div');
+    div.id = 'operation_spinner';
+    div.className = 'spinner operation_spinner';
+    div.innerHTML = [
+      '<div class="rect1"></div>',
+      '<div class="rect2"></div>',
+      '<div class="rect3"></div>',
+      '<div class="rect4"></div>',
+      '<div class="rect5"></div>'
+    ].join ('');
+    document.getElementById('App').appendChild(div);
+  },
+  hideOperationSpinner() {
+    var div = document.getElementById('operation_spinner');
+    if (div) {
+      div.style.display = 'none';
+    }
   }
 }
