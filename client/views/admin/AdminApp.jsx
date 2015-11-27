@@ -12,7 +12,7 @@ AdminApp = React.createClass({
     }
     return (
       <section className="astro_main_container">
-        <AdminToolbar buttonText="+Agregar Curso" buttonAction={this.addButtonHandler}/>
+        <AdminToolbar buttonText="+ Agregar Curso" buttonAction={this.addButtonHandler}/>
         <CoursesList/>
       </section>
     )
