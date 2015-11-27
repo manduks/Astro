@@ -16,6 +16,9 @@
 @import "footer";
 @import "profile";
 
+//Admin styles
+@import "admin/actionsToolbar";
+
 html, body{
     overflow:hidden;
 }

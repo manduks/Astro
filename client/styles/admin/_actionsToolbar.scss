@@ -1,0 +1,9 @@
+.admin_astro_toolbar {
+  display: flex;
+  justify-content:flex-end;
+  .astro_button{
+    background-color: $light;
+    color: $primary;
+    margin-right: 25px;
+  }
+}

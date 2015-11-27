@@ -12,8 +12,12 @@ AdminApp = React.createClass({
     }
     return (
       <section className="astro_main_container">
-        Admin
+        <AdminToolbar buttonText="+Agregar Curso" buttonAction={this.addButtonHandler}/>
+        <CoursesList/>
       </section>
     )
+  },
+  addButtonHandler (){
+    this.history.pushState(null, "/admin/lessons");
   }
 });
