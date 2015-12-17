@@ -1,4 +1,5 @@
 AdminLessons = React.createClass({
+  mixins: [ReactRouter.History],
   render() {
     return (
       <section className="astro_main_container">
@@ -6,5 +7,9 @@ AdminLessons = React.createClass({
         <LessonsList/>
       </section>
     )
+  },
+
+  addButtonHandler (){
+    this.history.pushState(null, "/admin/addLesson");
   }
 });

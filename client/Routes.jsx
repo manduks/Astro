@@ -28,8 +28,9 @@ Routes = React.createClass({
         </Route>
         <Route path="/admin" component={AdminAuth}>
           <IndexRoute component={AdminApp}/>
-          <Route name="adminCourses" component={AdminLessons} path="/admin/lessons"/>
+          <Route name="adminLessons" component={AdminLessons} path="/admin/lessons"/>
           <Route name="adminUsers" component={AdminUsers} path="/admin/users"/>
+          <Route name="addLesson" component={LessonForm} path="/admin/addLesson"/>
         </Route>
         <Route path="*" component={NotFound} />
       </Router>

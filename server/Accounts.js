@@ -26,6 +26,7 @@ function getUserInfo (accessToken) {
 }
 
 Accounts.onCreateUser(function(options, user) {
+    var admins = ['lumartineck@gmail.com', 'iam@armando.mx']
     if (user.services['github']){
       user.profile = getUserInfo(user.services.github.accessToken);
       user.login = user.profile.login;
@@ -38,6 +39,6 @@ Accounts.onCreateUser(function(options, user) {
         user.avatar = user.services['twitter'].profile_image_url;
     }
     user.name = user.profile.name;
-    user.isAdmin = user.email === 'iam@armando.mx';
+    user.isAdmin = (admins.indexOf(user.email) > -1);
     return user;
 });

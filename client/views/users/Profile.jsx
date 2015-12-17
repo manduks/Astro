@@ -26,15 +26,15 @@ Profile = React.createClass({
       return <Loader></Loader>;
     }
     return (
-      <div className="astro_user_profile">
-        <form className ="astro_user_profile_content" onSubmit={this.updateUserData}>
-            <div className ="astro_user_profile_avatar">
+      <div className="astro_form_component">
+        <form className ="astro_form_component_content" onSubmit={this.updateUserData}>
+            <div className ="astro_form_component_avatar">
               <img src={user.avatar}></img>
             </div>
-            <div className="astro_user_profile_content_textfield user_name">
+            <div className="astro_form_component_content_textfield user_name">
               <input type="text" name="userName" ref="userNameInput"  defaultValue={user.name} autoComplete="off" placeholder="Nombre completo" required/>
             </div>
-            <div className="astro_user_profile_content_textfield email">
+            <div className="astro_form_component_content_textfield email">
               <input  type="email" ref="emailInput" name="email" defaultValue={user.email} autoComplete="off" placeholder="Correo electrónico"  required/>
             </div>
             <input type="submit" className="astro_button large" value= "Guardar"/>
