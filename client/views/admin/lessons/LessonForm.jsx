@@ -28,7 +28,7 @@ LessonForm = React.createClass({
             </div>
             <div className="astro_form_component_content_textfield2">
               <div className="file_input_wrapper">
-                  <div className="file_upload_label">Choose a file to upload</div>
+                  <div className="file_upload_label">Elegir video</div>
                   <input type="file" name="upload" className="upload_field" title="Choose a file to upload"/>
               </div>
             </div>

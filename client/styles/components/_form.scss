@@ -91,7 +91,7 @@
         }
 
         .astro_button {
-            margin-top: 30px;
+            margin-top: 20px;
             margin-left: -30px;
             font-family: Montserrat-Regular;
             font-size: 24px;
@@ -120,13 +120,11 @@
         padding: 20px 60px;
         text-align: center;
         position: relative;
-        //background-color: #f6f7f8;
         border: solid 1px $secondary;
         background-color: rgba(255, 255, 255, 0.1);
-
         .file_upload_label {
             font-size: 13px;
-            color: $light;
+            color: rgba(255, 255, 255, 0.6);
             font-family: Montserrat-Regular;
             line-height: 17px;
         }
