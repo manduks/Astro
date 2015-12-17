@@ -29,8 +29,8 @@ LessonForm = React.createClass({
             <div className="astro_form_component_content_textfield2">
               <input type="text" name="duration" defaultValue="" autoComplete="off" placeholder="Duración" required/>
             </div>
-            <div className="astro_form_component_content_textfield2">
-              <input type="file" name="file" defaultValue="" autoComplete="off" placeholder="Video" required/>
+            <div className="astro_form_component_content_textfield2 file_input">
+              <input type="file" name="file" className="file_input" required/>
             </div>
             <input type="submit" className="astro_button large" value= "Guardar"/>
         </form>
