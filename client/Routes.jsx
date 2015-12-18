@@ -43,4 +43,5 @@ Meteor.startup(function() {
     app.id = 'App';
     document.body.appendChild(app);
     ReactDOM.render(<Routes/>, app);
+
 });
