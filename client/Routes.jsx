@@ -30,6 +30,7 @@ Routes = React.createClass({
           <IndexRoute component={AdminApp}/>
           <Route name="adminLessons" component={AdminLessons} path="/admin/lessons"/>
           <Route name="adminUsers" component={AdminUsers} path="/admin/users"/>
+          <Route name="addCourse" component={CourseForm} path="/admin/addCourse"/>
           <Route name="addLesson" component={LessonForm} path="/admin/addLesson"/>
         </Route>
         <Route path="*" component={NotFound} />

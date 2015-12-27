@@ -10,7 +10,6 @@
     .astro_form_component_content {
         padding: 10px;
         width: 490px;
-        height: 600px;
         display: flex;
         align-items: center;
         flex-direction: column;
@@ -30,7 +29,6 @@
 
         .astro_form_component_content_textfield {
             margin-right: 30px;
-
             input {
                 border-radius: 40px;
                 border: 1px solid $secondary;
@@ -44,7 +42,6 @@
                 padding-right: 50px;
                 margin-top: 20px;
                 background-color: rgba(255, 255, 255, 0.1);
-
                 &:focus {
                     outline: 0;
                 }
@@ -53,7 +50,6 @@
 
         .astro_form_component_content_textfield2 {
             margin-right: 30px;
-
             input {
                 border: 1px solid $secondary;
                 width: 310px;
@@ -66,7 +62,6 @@
                 padding-right: 10px;
                 margin-top: 20px;
                 background-color: rgba(255, 255, 255, 0.1);
-
                 &:focus {
                     outline: 0;
                 }
@@ -75,7 +70,7 @@
             textarea {
                 border: 1px solid $secondary;
                 width: 310px;
-                height: 200px;
+                height: 70px;
                 font-size: 13px;
                 color: $light;
                 font-family: Montserrat-Regular;
@@ -83,7 +78,6 @@
                 padding: 10px 10px 10px 20px;
                 margin-top: 20px;
                 background-color: rgba(255, 255, 255, 0.1);
-
                 &:focus {
                     outline: 0;
                 }
@@ -91,20 +85,22 @@
         }
 
         .astro_button {
-            margin-top: 20px;
             margin-left: -30px;
             font-family: Montserrat-Regular;
             font-size: 24px;
-            color: $light;
+            color: rgba(255, 255, 255, 0.7);
             line-height: 29px;
             border: 0px;
-
+            width: 340px;
+            background-color: $secondary;
+            border: 2px solid rgba(255, 255, 255, 0.7);
             &:focus {
                 outline: 0;
             }
-
             &:active {
-                background-color: darken($primary, 10%);
+                background-color: lighten($secondary, 5%);
+                border: 2px solid rgba(255, 255, 255, 0.8);
+                color: rgba(255, 255, 255, 0.8);
             }
         }
     }
@@ -135,7 +131,6 @@
             bottom: 0;
             padding: 0;
             opacity: 0;
-            height: 300px;
             outline: none;
             cursor: inherit;
             position: absolute;

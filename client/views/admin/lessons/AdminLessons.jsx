@@ -10,6 +10,6 @@ AdminLessons = React.createClass({
   },
 
   addButtonHandler (){
-    this.history.pushState(null, "/admin/addLesson");
+    this.history.pushState(null, '/admin/addLesson');
   }
 });

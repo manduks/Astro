@@ -48,7 +48,7 @@ CoursesList = React.createClass({
     return (
       <div className="astro_courses_list">
         {this.state.courses.map(function (course) {
-            return <CourseItem  key={course.lessons} course={course}/>;
+            return <CourseItem  key={course.lessons} course={course} onCourseDoubleClick={this.props.onCourseDoubleClick}/>;
       }, this)}
       </div>
     )
