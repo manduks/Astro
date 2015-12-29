@@ -1,5 +1,3 @@
-const S3Upload = BlazeToReact('s3_upload');
-
 VideoLayout = React.createClass({
   mixins: [DOM],
   render() {
@@ -10,11 +8,10 @@ VideoLayout = React.createClass({
             <img src="img/play.png"></img>
           </span>
           <div>
-            <h2>Que es REact?</h2>
+            <h2>Que es React?</h2>
             <p>Configurando nuestro entorno de desarrollo</p>
           </div>
         </div>
-        <S3Upload />
         <div className="astro_video_comments_info">
           <span>23 COMMENTS</span>
           <ul>
