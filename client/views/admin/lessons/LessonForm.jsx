@@ -56,27 +56,17 @@ LessonForm = React.createClass({
     )
   },
   uploadLessonImage() {
-    const self = this,
-    files =  this.refs.imageInput.files;
-
+    const files =  this.refs.imageInput.files;
     this.setState({imageFile: files[0].name});
-
-    S3.upload({
-      files: files,
-      path : 'lessons_assets'
-    },function (e, r){
-      if (e) {
-        return console && console.log(e);
-      }
-      self.imageFileURL = r.url;
-    });
+    this.uploadFile(files, 'imageFileURL');
   },
   uploadLessonVideo() {
-    const self = this,
-    files =  this.refs.videoInput.files;
-
+    const files =  this.refs.videoInput.files;
     this.setState({videoFile: files[0].name});
-
+    this.uploadFile(files, 'imageFileURL');
+  },
+  uploadFile (files, varName) {
+    const self = this;
     S3.upload({
       files: files,
       path : 'lessons_assets'
@@ -84,7 +74,7 @@ LessonForm = React.createClass({
       if (e) {
         return console && console.log(e);
       }
-      self.videoFileURL = r.url;
+      self[varName] = r.url;
     });
   }
 });
