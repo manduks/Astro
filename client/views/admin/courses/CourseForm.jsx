@@ -45,7 +45,7 @@ CourseForm = React.createClass({
     S3.upload({
       files: files,
       path : 'courses_assets'
-    },function(e,r){
+    },function(e, r){
       console.log(arguments);
       if (e) {
         return console && console.log(e);
