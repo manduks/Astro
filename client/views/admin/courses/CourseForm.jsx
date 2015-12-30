@@ -1,10 +1,18 @@
 CourseForm = React.createClass({
-  getInitialState() {
+  mixins: [ReactMeteorData],
+  getMeteorData () {
+    var sub = S3.collection;
     return {
-      imageInputLabel : 'Elegir imagen'
+      files: S3.collection.find().fetch()
     }
   },
   render() {
+    let file = this.data.files[this.data.files.length - 1];
+    let imageInputLabel = file ? (file.percent_uploaded + ' %') : 'Elegir imagen';
+
+    if (file && (file.percent_uploaded >= 100)) {
+      imageInputLabel = 'Archivo listo 100%';
+    }
     return (
       <div className="astro_form_component">
         <form className ="astro_form_component_content" onSubmit={this.addOrUpdateCourse}>
@@ -22,7 +30,7 @@ CourseForm = React.createClass({
           </div>
           <div className="astro_form_component_content_textfield2">
             <div className="file_input_wrapper">
-              <div className="file_upload_label">{this.state.imageInputLabel}</div>
+              <div className="file_upload_label">{imageInputLabel}</div>
               <input type="file" name="upload" ref="imageInput" onChange={this.uploadCourseImage} className="upload_field" title="Elegir imagen"/>
             </div>
           </div>
@@ -40,10 +48,10 @@ CourseForm = React.createClass({
     },function(e,r){
       console.log(arguments);
       if (e) {
-        console.log(e);
+        return console && console.log(e);
       }
-      console.log(r);
-      self.setState({imageInputLabel : 'manduks' })
+      //console.log(r);
+      self.fileURL = r.url;
     });
   }
 });
