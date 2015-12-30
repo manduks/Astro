@@ -82,6 +82,7 @@ CourseForm = React.createClass({
     //TODO: validations
     // TODO: send request to save the server
     this.setState({title: '', file: '', description: '', lessonNumber: '', duration: ''});
+
   }
 });
 
