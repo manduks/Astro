@@ -1,5 +1,5 @@
 CourseForm = React.createClass({
-  mixins: [ReactMeteorData],
+  mixins: [ReactMeteorData, ReactRouter.History],
   getMeteorData () {
     var sub = S3.collection;
     return {
@@ -28,7 +28,6 @@ CourseForm = React.createClass({
       files: files,
       path : 'courses_assets'
     },function(err,r){
-      console.log(arguments);
       if (err) {
         return console && console.log(err);
       }
@@ -84,8 +83,11 @@ CourseForm = React.createClass({
       lessonsNumber: state.lessonsNumber,
       duration: state.duration,
       image: self.fileURL,
-    });
+    }, this.afterSaveCourse);
+  },
+  afterSaveCourse() {
     this.setState({title: '', file: '', description: '', lessonsNumber: '', duration: ''});
+    this.history.pushState(null, '/admin');
   }
 });
 

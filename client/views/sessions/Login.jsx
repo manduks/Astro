@@ -25,6 +25,6 @@ Login = React.createClass({
       return console.log(err);
     }
     this.hideModal();
-    this.history().pushState(null, "/app");
+    this.history().pushState(null, '/app');
   }
 });
