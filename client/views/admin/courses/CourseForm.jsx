@@ -7,7 +7,7 @@ CourseForm = React.createClass({
     }
   },
   getInitialState: function() {
-    return {title: '', file: '', description: '', lessonNumber: '', duration: ''};
+    return {title: '', file: '', description: '', lessonsNumber: '', duration: ''};
   },
   handleTitleChange: function(e) {
     this.setState({title: e.target.value});
@@ -16,7 +16,7 @@ CourseForm = React.createClass({
     this.setState({description: e.target.value});
   },
   handleLessonNumberChange: function(e) {
-    this.setState({lessonNumber: e.target.value});
+    this.setState({lessonsNumber: e.target.value});
   },
   handleDurationChange: function(e) {
     this.setState({duration: e.target.value});
@@ -54,7 +54,7 @@ CourseForm = React.createClass({
             <textarea rows="4" cols="50" name="description" value={this.state.description} onChange={this.handleDescriptionChange} autoComplete="off" placeholder="Descripción" required/>
           </div>
           <div className="astro_form_component_content_textfield2">
-            <input type="text" name="lessonNumber" value={this.state.lessonNumber} onChange={this.handleLessonNumberChange} autoComplete="off" placeholder="Número de lecciones" required/>
+            <input type="text" name="lessonsNumber" value={this.state.lessonsNumber} onChange={this.handleLessonNumberChange} autoComplete="off" placeholder="Número de lecciones" required/>
           </div>
           <div className="astro_form_component_content_textfield2">
             <input type="text" name="duration" value={this.state.duration} onChange={this.handleDurationChange} autoComplete="off" placeholder="Duración" required/>
@@ -62,7 +62,7 @@ CourseForm = React.createClass({
           <div className="astro_form_component_content_textfield2">
             <div className="file_input_wrapper">
               <div className="file_upload_label">{imageInputLabel}</div>
-              <input type="file" name="upload" ref="imageInput" onChange={this.uploadCourseImageChange} className="upload_field" title="Elegir imagen"/>
+              <input type="file" name="upload" ref="imageInput" onChange={this.uploadCourseImageChange} className="upload_field" title="Elegir imagen" required/>
             </div>
           </div>
           <input type="submit" className="astro_button large" value= "Guardar"/>
@@ -72,17 +72,20 @@ CourseForm = React.createClass({
   },
   addOrUpdateCourse(e) {
     e.preventDefault();
-    var title = this.state.title.trim();
-    var description = this.state.description.trim();
-    var lessonNumber = this.state.lessonNumber.trim();
-    var duration = this.state.duration.trim();
+    var state = this.state;
+    title = state.title.trim(),
+    description = state.description.trim(),
+    lessonsNumber = state.lessonsNumber.trim(),
+    duration = state.duration.trim();
 
-    console.log(this.state);
-    console.log(self.fileURL);
-    //TODO: validations
-    // TODO: send request to save the server
-    this.setState({title: '', file: '', description: '', lessonNumber: '', duration: ''});
-
+    Meteor.call('addCourse', {
+      title: state.title,
+      description: state.description,
+      lessonsNumber: state.lessonsNumber,
+      duration: state.duration,
+      image: self.fileURL,
+    });
+    this.setState({title: '', file: '', description: '', lessonsNumber: '', duration: ''});
   }
 });
 
