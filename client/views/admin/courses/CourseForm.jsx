@@ -1,5 +1,5 @@
 CourseForm = React.createClass({
-  mixins: [ReactMeteorData, ReactRouter.History],
+  mixins: [ReactMeteorData, ReactRouter.History, React.addons.LinkedStateMixin],
   getMeteorData () {
     var sub = S3.collection;
     return {
@@ -7,19 +7,7 @@ CourseForm = React.createClass({
     }
   },
   getInitialState: function() {
-    return {title: '', file: '', description: '', lessonsNumber: '', duration: ''};
-  },
-  handleTitleChange: function(e) {
-    this.setState({title: e.target.value});
-  },
-  handleDescriptionChange: function(e) {
-    this.setState({description: e.target.value});
-  },
-  handleLessonNumberChange: function(e) {
-    this.setState({lessonsNumber: e.target.value});
-  },
-  handleDurationChange: function(e) {
-    this.setState({duration: e.target.value});
+    return {title: '', fileURL: '', description: '', lessonsNumber: '', duration: ''};
   },
   uploadCourseImageChange: function(e) {
     var self = this,
@@ -31,9 +19,7 @@ CourseForm = React.createClass({
       if (err) {
         return console && console.log(err);
       }
-      //console.log(r);
-      self.fileURL = r.url;
-      self.setState({file: r.url});
+      self.setState({fileURL: r.url});
     });
   },
   render() {
@@ -47,16 +33,16 @@ CourseForm = React.createClass({
       <div className="astro_form_component">
         <form className ="astro_form_component_content" onSubmit={this.addOrUpdateCourse}>
           <div className="astro_form_component_content_textfield2">
-            <input type="text" name="title" value={this.state.title} onChange={this.handleTitleChange} autoComplete="off" placeholder="Título del curso" required/>
+            <input type="text" name="title" valueLink={this.linkState('title')} autoComplete="off" placeholder="Título del curso" required/>
           </div>
           <div className="astro_form_component_content_textfield2">
-            <textarea rows="4" cols="50" name="description" value={this.state.description} onChange={this.handleDescriptionChange} autoComplete="off" placeholder="Descripción" required/>
+            <textarea rows="4" cols="50" name="description" valueLink={this.linkState('description')} autoComplete="off" placeholder="Descripción" required/>
           </div>
           <div className="astro_form_component_content_textfield2">
-            <input type="text" name="lessonsNumber" value={this.state.lessonsNumber} onChange={this.handleLessonNumberChange} autoComplete="off" placeholder="Número de lecciones" required/>
+            <input type="text" name="lessonsNumber" valueLink={this.linkState('lessonsNumber')} autoComplete="off" placeholder="Número de lecciones" required/>
           </div>
           <div className="astro_form_component_content_textfield2">
-            <input type="text" name="duration" value={this.state.duration} onChange={this.handleDurationChange} autoComplete="off" placeholder="Duración" required/>
+            <input type="text" name="duration" valueLink={this.linkState('duration')} autoComplete="off" placeholder="Duración" required/>
           </div>
           <div className="astro_form_component_content_textfield2">
             <div className="file_input_wrapper">
@@ -70,19 +56,15 @@ CourseForm = React.createClass({
     )
   },
   addOrUpdateCourse(e) {
+    const state = this.state;
     e.preventDefault();
-    var state = this.state;
-    title = state.title.trim(),
-    description = state.description.trim(),
-    lessonsNumber = state.lessonsNumber.trim(),
-    duration = state.duration.trim();
-
+    console.log(state);
     Meteor.call('addCourse', {
-      title: state.title,
-      description: state.description,
-      lessonsNumber: state.lessonsNumber,
-      duration: state.duration,
-      image: self.fileURL,
+      title: state.title.trim(),
+      description: state.description.trim(),
+      lessonsNumber: state.lessonsNumber.trim(),
+      duration: state.duration.trim(),
+      image: state.fileURL,
     }, this.afterSaveCourse);
   },
   afterSaveCourse() {
