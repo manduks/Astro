@@ -58,13 +58,13 @@ CourseForm = React.createClass({
   addOrUpdateCourse(e) {
     const state = this.state;
     e.preventDefault();
-    console.log(state);
     Meteor.call('addCourse', {
-      title: state.title.trim(),
-      description: state.description.trim(),
+      title        : state.title.trim(),
+      description  : state.description.trim(),
       lessonsNumber: state.lessonsNumber.trim(),
-      duration: state.duration.trim(),
-      image: state.fileURL,
+      duration     : state.duration.trim(),
+      image        : state.fileURL,
+      lessons      : []
     }, this.afterSaveCourse);
   },
   afterSaveCourse() {
