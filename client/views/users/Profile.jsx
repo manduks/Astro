@@ -37,7 +37,7 @@ Profile = React.createClass({
             <div className="astro_form_component_content_textfield email">
               <input  type="email" ref="emailInput" name="email" defaultValue={user.email} autoComplete="off" placeholder="Correo electrónico"  required/>
             </div>
-            <input type="submit" className="astro_button large" value= "Guardar"/>
+            <input type="submit" className="astro_button large margin_top" value= "Guardar"/>
         </form>
       </div>
     )

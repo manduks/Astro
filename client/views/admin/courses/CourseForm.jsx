@@ -1,5 +1,5 @@
 CourseForm = React.createClass({
-  mixins: [ReactMeteorData, ReactRouter.History, React.addons.LinkedStateMixin],
+  mixins: [ReactMeteorData, ReactRouter.History, React.addons.LinkedStateMixin, DOM],
   getMeteorData () {
     var sub = S3.collection;
     return {
@@ -12,6 +12,8 @@ CourseForm = React.createClass({
   uploadCourseImageChange: function(e) {
     var self = this,
       files =  this.refs.imageInput.files;
+
+    self.showOperationSpinner();
     S3.upload({
       files: files,
       path : 'courses_assets'
@@ -20,6 +22,7 @@ CourseForm = React.createClass({
         return console && console.log(err);
       }
       self.setState({fileURL: r.url});
+      self.hideOperationSpinner();
     });
   },
   render() {
@@ -57,7 +60,9 @@ CourseForm = React.createClass({
   },
   addOrUpdateCourse(e) {
     const state = this.state;
+    const self = this;
     e.preventDefault();
+    self.showOperationSpinner();
     Meteor.call('addCourse', {
       title        : state.title.trim(),
       description  : state.description.trim(),
@@ -68,6 +73,7 @@ CourseForm = React.createClass({
     }, this.afterSaveCourse);
   },
   afterSaveCourse() {
+    this.hideOperationSpinner();
     this.setState({title: '', file: '', description: '', lessonsNumber: '', duration: ''});
     this.history.pushState(null, '/admin');
   }
