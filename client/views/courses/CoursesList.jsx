@@ -14,9 +14,13 @@ CoursesList = React.createClass({
     return (
       <div className="astro_courses_list">
         {this.data.courses.map(function (course) {
-            return <CourseItem  key={course._id} course={course} onCourseDoubleClick={this.props.onCourseDoubleClick}/>;
+            return <CourseItem  key={course._id} course={course} onCourseDoubleClick={this.onCourseDoubleClick.bind(this, course)}/>;
       }, this)}
       </div>
     )
+  },
+  onCourseDoubleClick(course) {
+    Session.set('currentCourse', course);
+    return this.props.onCourseDoubleClick && this.props.onCourseDoubleClick();
   }
 });
