@@ -59,8 +59,9 @@ CourseForm = React.createClass({
     )
   },
   addOrUpdateCourse(e) {
-    const state = this.state;
-    const self = this;
+    const state = this.state,
+    self = this;
+
     e.preventDefault();
     self.showOperationSpinner();
     Meteor.call('addCourse', {
@@ -78,10 +79,3 @@ CourseForm = React.createClass({
     this.history.pushState(null, '/admin');
   }
 });
-
-/**
-* Duracion
-* title
-* Description
-* Video
-*/
