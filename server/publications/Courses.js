@@ -4,6 +4,8 @@ Meteor.publish('courses', function () {
 
 Meteor.methods({
   addCourse: function(data) {
-    return Courses.insert(data);
+    var id = data._id;
+    delete data._id;
+    return Courses.update({_id : id},data,{upsert: true});
   }
 });

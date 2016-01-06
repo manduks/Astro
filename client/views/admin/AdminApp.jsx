@@ -6,21 +6,28 @@ AdminApp = React.createClass({
       usersLoader: !sub.ready()
     }
   },
+  addButtonHandler () {
+    Session.set('currentCourse', undefined);
+    this.history.pushState(null, '/admin/addCourse');
+  },
+  editButtonHandler () {
+    this.history.pushState(null, '/admin/addCourse');
+  },
+  onCourseDoubleClick() {
+    this.history.pushState(null, '/admin/lessons');
+  },
   render () {
     if (!Meteor.user()) {
       return <Loader></Loader>
     }
     return (
       <section className="astro_main_container">
-        <AdminToolbar buttonText="+ Agregar curso" buttonAction={this.addButtonHandler}/>
+        <AdminToolbar>
+          <Button size="small" text="+ Agregar curso" onClick={this.addButtonHandler}/>
+          <Button size="small" text="+ Editar curso" onClick={this.editButtonHandler}/>
+        </AdminToolbar>
         <CoursesList onCourseDoubleClick={this.onCourseDoubleClick}/>
       </section>
     )
-  },
-  addButtonHandler () {
-    this.history.pushState(null, '/admin/addCourse');
-  },
-  onCourseDoubleClick() {
-    this.history.pushState(null, '/admin/lessons');
   }
 });

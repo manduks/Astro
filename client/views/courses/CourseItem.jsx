@@ -1,7 +1,7 @@
 CourseItem = React.createClass({
   render() {
     return (
-      <div className="astro_course_item_wrapper" onDoubleClick={this.props.onCourseDoubleClick}>
+      <div className="astro_course_item_wrapper" onDoubleClick={this.props.onCourseDoubleClick} onClick={this.props.onCourseClick}>
         <div className="astro_course_item_info">
           <strong className="astro_course_item_title">{this.props.course.title + ', ' + this.props.course.description}</strong>
           <section className="astro_course_item_bottom_info">

@@ -7,7 +7,15 @@ CourseForm = React.createClass({
     }
   },
   getInitialState: function() {
-    return {title: '', fileURL: '', description: '', lessonsNumber: '', duration: ''};
+    var course = Session.get('currentCourse') || {};
+    return {
+      _id          : course._id,
+      title        : course.title,
+      fileURL      : course.fileURL,
+      description  : course.description,
+      lessonsNumber: course.lessonsNumber,
+      duration     : course.duration
+    };
   },
   uploadCourseImageChange: function(e) {
     var self = this,
@@ -65,6 +73,7 @@ CourseForm = React.createClass({
     e.preventDefault();
     self.showOperationSpinner();
     Meteor.call('addCourse', {
+      _id          : state._id,
       title        : state.title.trim(),
       description  : state.description.trim(),
       lessonsNumber: state.lessonsNumber.trim(),
