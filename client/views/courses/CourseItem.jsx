@@ -1,7 +1,19 @@
 CourseItem = React.createClass({
+  mixins: [ReactMeteorData],
+  getMeteorData () {
+    return {
+      selectedCourse: Session.get('currentCourse'),
+    }
+  },
   render() {
+    let classes = 'astro_course_item_wrapper';
+    if (this.props.course && this.data.selectedCourse) {
+      if (this.props.course._id === this.data.selectedCourse._id) {
+          classes += ' item_selected';
+      }
+    }
     return (
-      <div className="astro_course_item_wrapper" onDoubleClick={this.props.onCourseDoubleClick} onClick={this.props.onCourseClick}>
+      <div className={classes} onDoubleClick={this.props.onCourseDoubleClick} onClick={this.props.onCourseClick}>
         <div className="astro_course_item_info">
           <strong className="astro_course_item_title">{this.props.course.title + ', ' + this.props.course.description}</strong>
           <section className="astro_course_item_bottom_info">

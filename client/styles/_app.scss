@@ -10,3 +10,8 @@
     padding-right: 15px;
   }
 }
+
+.item_selected {
+  border: 2px solid lighten($primary, 10%) !important;
+  cursor: pointer;
+}
