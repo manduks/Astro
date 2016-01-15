@@ -1,22 +1,22 @@
 CourseForm = React.createClass({
   mixins: [ReactMeteorData, ReactRouter.History, React.addons.LinkedStateMixin, DOM],
-  getMeteorData () {
+  getMeteorData() {
     return {
       files: S3.collection.find().fetch()
     }
   },
-  getInitialState: function() {
+  getInitialState() {
     var course = Session.get('currentCourse') || {};
     return {
       _id          : course._id,
       title        : course.title,
-      fileURL      : course.fileURL,
+      imageFile    : course.imageFile,
       description  : course.description,
       lessonsNumber: course.lessonsNumber,
       duration     : course.duration
     };
   },
-  uploadCourseImageChange: function(e) {
+  uploadCourseImageChange(e) {
     var self = this,
       files =  this.refs.imageInput.files;
 
@@ -28,9 +28,30 @@ CourseForm = React.createClass({
       if (err) {
         return console && console.log(err);
       }
-      self.setState({fileURL: r.url});
+      self.setState({imageFile: r.url});
       self.hideOperationSpinner();
     });
+  },
+  addOrUpdateCourse(e) {
+    const state = this.state,
+    self = this;
+
+    e.preventDefault();
+    self.showOperationSpinner();
+    Meteor.call('addCourse', {
+      _id          : state._id,
+      title        : state.title.trim(),
+      description  : state.description.trim(),
+      lessonsNumber: state.lessonsNumber.trim(),
+      duration     : state.duration.trim(),
+      image        : state.imageFile,
+      lessons      : []
+    }, this.afterSaveCourse);
+  },
+  afterSaveCourse() {
+    this.hideOperationSpinner();
+    this.setState({id: null, title: null, imageFile: null, description: null, lessonsNumber: null, duration: null});
+    this.history.pushState(null, '/admin');
   },
   render() {
     let file = this.data.files[this.data.files.length - 1];
@@ -64,26 +85,5 @@ CourseForm = React.createClass({
         </form>
       </div>
     )
-  },
-  addOrUpdateCourse(e) {
-    const state = this.state,
-    self = this;
-
-    e.preventDefault();
-    self.showOperationSpinner();
-    Meteor.call('addCourse', {
-      _id          : state._id,
-      title        : state.title.trim(),
-      description  : state.description.trim(),
-      lessonsNumber: state.lessonsNumber.trim(),
-      duration     : state.duration.trim(),
-      image        : state.fileURL,
-      lessons      : []
-    }, this.afterSaveCourse);
-  },
-  afterSaveCourse() {
-    this.hideOperationSpinner();
-    this.setState({title: '', file: '', description: '', lessonsNumber: '', duration: ''});
-    this.history.pushState(null, '/admin');
   }
 });
