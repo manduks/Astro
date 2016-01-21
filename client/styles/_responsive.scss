@@ -1,0 +1,19 @@
+/* For mobile phones: */
+@media only screen and (max-width: 836px) {
+  .astro_courses_list{
+    .astro_course_item_wrapper{
+      width: 99% !important;
+    }
+  }
+  .astro_header{
+    .astro_legend{
+      font-size: 40px;
+    }
+  }
+}
+/*
+@media only screen and (min-width: 600px) {
+}
+@media only screen and (min-width: 768px) {
+}
+*/
