@@ -1,7 +1,7 @@
 LessonItem = React.createClass({
   render() {
     return (
-      <div className="astro_lesson_item_wrapper">
+      <div className="astro_lesson_item_wrapper" onDoubleClick={this.props.onLessonDoubleClick} onClick={this.props.onLessonClick}>
         <section className="astro_lesson_item_wrapper-inner">
           <div className="astro_lesson_item_wrapper-inner-icon">
             <img src={this.props.lesson.icon}></img>

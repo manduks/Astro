@@ -7,6 +7,13 @@ CoursesList = React.createClass({
       loadingCourses: !sub.ready()
     }
   },
+  onCourseDoubleClick(course) {
+    Session.set('currentCourse', course);
+    return this.props.onCourseDoubleClick && this.props.onCourseDoubleClick();
+  },
+  onCourseClick(course) {
+    Session.set('currentCourse', course);
+  },
   render() {
     if (this.loadingCourses) {
       return <Loader></Loader>
@@ -18,12 +25,5 @@ CoursesList = React.createClass({
       }, this)}
       </div>
     )
-  },
-  onCourseDoubleClick(course) {
-    Session.set('currentCourse', course);
-    return this.props.onCourseDoubleClick && this.props.onCourseDoubleClick();
-  },
-  onCourseClick(course) {
-    Session.set('currentCourse', course);
   }
 });

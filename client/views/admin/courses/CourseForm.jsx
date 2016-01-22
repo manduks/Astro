@@ -12,8 +12,7 @@ CourseForm = React.createClass({
       title        : course.title,
       imageFile    : course.imageFile,
       description  : course.description,
-      lessonsNumber: course.lessonsNumber,
-      duration     : course.duration
+      price        : course.price
     };
   },
   uploadCourseImageChange(e) {
@@ -42,15 +41,13 @@ CourseForm = React.createClass({
       _id          : state._id,
       title        : state.title.trim(),
       description  : state.description.trim(),
-      lessonsNumber: state.lessonsNumber.trim(),
-      duration     : state.duration.trim(),
+      price        : state.price.trim(),
       image        : state.imageFile,
       lessons      : []
     }, this.afterSaveCourse);
   },
   afterSaveCourse() {
     this.hideOperationSpinner();
-    //this.setState({id: null, title: null, imageFile: null, description: null, lessonsNumber: null, duration: null});
     this.history.pushState(null, '/admin');
   },
   render() {
@@ -70,10 +67,7 @@ CourseForm = React.createClass({
             <textarea rows="4" cols="50" name="description" valueLink={this.linkState('description')} autoComplete="off" placeholder="Descripción" required/>
           </div>
           <div className="astro_form_component_content_textfield2">
-            <input type="text" name="lessonsNumber" valueLink={this.linkState('lessonsNumber')} autoComplete="off" placeholder="Número de lecciones" required/>
-          </div>
-          <div className="astro_form_component_content_textfield2">
-            <input type="text" name="duration" valueLink={this.linkState('duration')} autoComplete="off" placeholder="Duración" required/>
+            <input type="text" name="price" valueLink={this.linkState('price')} autoComplete="off" placeholder="Precio en pesos" required/>
           </div>
           <div className="astro_form_component_content_textfield2">
             <div className="file_input_wrapper">

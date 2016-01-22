@@ -6,6 +6,7 @@ LessonForm = React.createClass({
       _id        : lesson._id,
       title      : lesson.title,
       description: lesson.description,
+      order      : lesson.order,
       imageFile  : lesson.imageFile,
       videoFile  : lesson.videoFile,
       duration   : lesson.duration,
@@ -56,7 +57,7 @@ LessonForm = React.createClass({
     self.showOperationSpinner();
     //console.log(self.state);
     Meteor.call('addLesson', {
-      _id        : state._id,
+      _id        : state._id || Random.id(),
       title      : state.title.trim(),
       description: state.description.trim(),
       order      : state.order.trim(),

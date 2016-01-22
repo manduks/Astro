@@ -2,7 +2,7 @@ Landing = React.createClass({
   mixins: [Utils, ReactRouter.History],
   handleLogin() {
     var self = this;
-    ReactUtils.render(
+    ReactDOM.render(
       <Login/>,
       self.getEl('dialog')
     );

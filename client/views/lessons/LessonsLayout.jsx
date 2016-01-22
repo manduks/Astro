@@ -14,7 +14,7 @@ LessonsLayout = React.createClass({
               <span className="astro_lesson_course_info_container_duration">{this.getCourseDuration(lessons)}&nbsp;min</span>
             </div>
           </aside>
-          <LessonsList/>
+          <LessonsList isAdmin={this.props.isAdmin}/>
         </div>
       </section>
     )

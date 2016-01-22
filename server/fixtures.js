@@ -52,6 +52,7 @@ if (Courses.find().count() === 0) {
   }];
 
   courses.forEach(function (course) {
+    course.lessons = [];
     Courses.insert(course);
   });
   console.log('FINISHED INSERTING COURSES');
