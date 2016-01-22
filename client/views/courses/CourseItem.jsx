@@ -20,8 +20,8 @@ CourseItem = React.createClass({
         <div className="astro_course_item_info">
           <strong className="astro_course_item_title">{this.props.course.title + ', ' + this.props.course.description}</strong>
           <section className="astro_course_item_bottom_info">
-            <span className="astro_course_item_bottom_info_lessons"><img src="img/lessons.png"></img>{lessons.length}</span>
-            <span className="astro_course_item_bottom_info_duration"><img src="img/clock.png"></img>{this.getCourseDuration(lessons)}&nbsp;min</span>
+            <span className="astro_course_item_bottom_info_lessons"><img src="http://localhost:3000/img//lessons.png"></img>{lessons.length}</span>
+            <span className="astro_course_item_bottom_info_duration"><img src="http://localhost:3000/img//clock.png"></img>{this.getCourseDuration(lessons)}&nbsp;min</span>
           </section>
         </div>
         <div className="astro_course_item_img">

@@ -3,7 +3,7 @@ Commentform = React.createClass({
     return (
       <div className="astro_comments_form">
         <div className="astro_comments_form_avatar">
-          <img src="img/es6.png"></img>
+          <img src="http://localhost:3000/img//es6.png"></img>
         </div>
         <div className="astro_comments_form_textfield">
           <input type="text" name="comment"> </input>

@@ -3,7 +3,7 @@ Login = React.createClass({
   render() {
     return (
       <div className="astro_login">
-        <img src="img/logo-medium.png"></img>
+        <img src="http://localhost:3000/img//logo-medium.png"></img>
         <h2>CODETLAN</h2>
         <section className="github">
           <Button size="large" text="Github" onClick={this.loginWithGithub}/>

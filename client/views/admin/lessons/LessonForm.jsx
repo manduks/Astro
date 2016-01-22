@@ -63,7 +63,7 @@ LessonForm = React.createClass({
       duration   : state.duration.trim(),
       imageFile  : state.imageFile,
       videoFile  : state.videoFile,
-      icon       :'img/bookmark.png',
+      icon       :'http://localhost:3000/img/bookmark.png',
       courseId   : currentCourse && currentCourse._id
     }, this.afterSaveLesson);
   },

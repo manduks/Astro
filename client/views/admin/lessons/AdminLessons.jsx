@@ -13,7 +13,7 @@ AdminLessons = React.createClass({
             <Button size="small" text="+ Agregar lección" onClick={this.addButtonHandler}/>
             <Button size="small" text="+ Editar lección" onClick={this.editButtonHandler}/>
           </AdminToolbar>
-        <LessonsList/>
+        <LessonsLayout/>
       </section>
     )
   }

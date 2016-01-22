@@ -5,7 +5,7 @@ VideoLayout = React.createClass({
       <section className="astro_main_container">
         <div className="astro_video_hero">
           <span>
-            <img src="img/play.png"></img>
+            <img src="http://localhost:3000/img//play.png"></img>
           </span>
           <div>
             <h2>Que es React?</h2>

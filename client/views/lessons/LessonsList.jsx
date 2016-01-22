@@ -1,6 +1,6 @@
 LessonsList = React.createClass({
   getInitialState() {
-    var course = Session.get('currentCourse') || {};
+    const course = Session.get('currentCourse') || {};
     return {
       lessons: course.lessons || []
     };
@@ -9,7 +9,7 @@ LessonsList = React.createClass({
     return (
       <div className="astro_lessons_list">
         {this.state.lessons.map(function (lesson) {
-          return <LessonItem  key={lesson.duration} lesson={lesson}/>;
+          return <LessonItem  key={lesson.order} lesson={lesson}/>;
         }, this)}
       </div>
     )
