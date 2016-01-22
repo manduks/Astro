@@ -50,7 +50,7 @@ CourseForm = React.createClass({
   },
   afterSaveCourse() {
     this.hideOperationSpinner();
-    this.setState({id: null, title: null, imageFile: null, description: null, lessonsNumber: null, duration: null});
+    //this.setState({id: null, title: null, imageFile: null, description: null, lessonsNumber: null, duration: null});
     this.history.pushState(null, '/admin');
   },
   render() {

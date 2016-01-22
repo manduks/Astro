@@ -8,27 +8,33 @@ LessonForm = React.createClass({
       description: lesson.description,
       imageFile  : lesson.imageFile,
       videoFile  : lesson.videoFile,
-      duration   : lesson.duration
+      duration   : lesson.duration,
+      imageName  : null,
+      videoName  : null,
     };
   },
   getMeteorData () {
     var sub = S3.collection;
     return {
-      imageFile: S3.collection.find({ 'file.original_name': this.state.imageFile }).fetch()[0],
-      videoFile: S3.collection.find({ 'file.original_name': this.state.videoFile }).fetch()[0]
+      imageFileData: S3.collection.find({ 'file.original_name': this.state.imageName }).fetch()[0],
+      videoFileData: S3.collection.find({ 'file.original_name': this.state.videoName }).fetch()[0]
     }
   },
   uploadLessonImage() {
     const files =  this.refs.imageInput.files;
-    this.uploadFile(files, 'imageFile');
+    this.uploadFile(files, 'imageFile', 'imageName');
   },
   uploadLessonVideo() {
     const files =  this.refs.videoInput.files;
-    this.uploadFile(files, 'videoFile');
+    this.uploadFile(files, 'videoFile', 'videoName');
   },
-  uploadFile (files, varName) {
+  uploadFile (files, varName, originalName) {
     const self = this;
     let obj = {};
+
+    obj[originalName] = files[0].name;
+    this.setState(obj);
+    self.showOperationSpinner();
     S3.upload({
       files: files,
       path : 'lessons_assets'
@@ -36,34 +42,39 @@ LessonForm = React.createClass({
       if (e) {
         return console && console.log(e);
       }
+      obj = {};
       obj[varName] = r.url;
       self.setState(obj);
+      self.hideOperationSpinner();
     });
   },
   addOrUpdateLesson(e) {
     const state = this.state,
-    self = this;
+    self = this,
+    currentCourse = Session.get('currentCourse');
     e.preventDefault();
     self.showOperationSpinner();
+    //console.log(self.state);
     Meteor.call('addLesson', {
-      _id          : state._id,
-      title        : state.title.trim(),
-      description  : state.description.trim(),
-      order        : state.order.trim(),
-      duration     : state.duration.trim(),
-      imageFile    : state.imageFile,
-      videoFile    : state.videoFile
+      _id        : state._id,
+      title      : state.title.trim(),
+      description: state.description.trim(),
+      order      : state.order.trim(),
+      duration   : state.duration.trim(),
+      imageFile  : state.imageFile,
+      videoFile  : state.videoFile,
+      courseId   : currentCourse && currentCourse._id
     }, this.afterSaveLesson);
   },
-  afterSaveCourse() {
+  afterSaveLesson() {
     this.hideOperationSpinner();
-    this.setState({id: null, title: null, description: null, order: null, duration: null, imageFile: null, videoFile: null});
+    //this.setState({id: null, title: null, description: null, order: null, duration: null, imageFile: null, videoFile: null});
     this.history.pushState(null, '/admin');
   },
   render() {
-    let imageFile = this.data.imageFile;
+    let imageFile = this.data.imageFileData;
     let imageInputLabel = imageFile? (imageFile.percent_uploaded + ' %') : 'Elegir imagen';
-    let videoFile = this.data.videoFile;
+    let videoFile = this.data.videoFileData;
     let videoInputLabel = videoFile? (videoFile.percent_uploaded + ' %') : 'Elegir video';
 
     if (imageFile && (imageFile.percent_uploaded >= 100)) {
@@ -90,11 +101,11 @@ LessonForm = React.createClass({
           <div className="astro_form_component_content_textfield2">
             <div className="file_input_wrapper">
               <div className="file_upload_label">{imageInputLabel}</div>
-              <input type="file" name="uploadImage" ref="imageInput" onChange={this.uploadLessonImage} className="upload_field" title="Elegir imagen"/>
+              <input type="file" name="uploadImage" ref="imageInput" onChange={this.uploadLessonImage} className="upload_field" title="Elegir imagen" required/>
             </div>
             <div className="file_input_wrapper">
               <div className="file_upload_label">{videoInputLabel}</div>
-              <input type="file" name="uploadVideo" ref="videoInput" onChange={this.uploadLessonVideo} className="upload_field" title="Elegir video"/>
+              <input type="file" name="uploadVideo" ref="videoInput" onChange={this.uploadLessonVideo} className="upload_field" title="Elegir video" required/>
             </div>
           </div>
           <input type="submit" className="astro_button large" value= "Guardar"/>
