@@ -1,5 +1,5 @@
 Login = React.createClass({
-  mixins: [DOM],
+  mixins: [Utils],
   render() {
     return (
       <div className="astro_login">

@@ -1,5 +1,5 @@
 VideoLayout = React.createClass({
-  mixins: [DOM],
+  mixins: [Utils],
   render() {
     return (
       <section className="astro_main_container">

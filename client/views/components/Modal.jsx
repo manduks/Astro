@@ -1,5 +1,5 @@
 Modal = React.createClass({
-  mixins: [DOM],
+  mixins: [Utils],
   propTypes: {
     width : React.PropTypes.number.isRequired,
     height: React.PropTypes.number.isRequired,

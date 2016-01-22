@@ -1,5 +1,5 @@
 LessonForm = React.createClass({
-  mixins: [ReactMeteorData, ReactRouter.History, React.addons.LinkedStateMixin, DOM],
+  mixins: [ReactMeteorData, ReactRouter.History, React.addons.LinkedStateMixin, Utils],
   getInitialState (){
     var lesson = Session.get('currentLesson') || {};
     return {
@@ -63,6 +63,7 @@ LessonForm = React.createClass({
       duration   : state.duration.trim(),
       imageFile  : state.imageFile,
       videoFile  : state.videoFile,
+      icon       :'img/bookmark.png',
       courseId   : currentCourse && currentCourse._id
     }, this.afterSaveLesson);
   },

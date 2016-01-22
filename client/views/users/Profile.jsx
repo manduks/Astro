@@ -1,5 +1,5 @@
 Profile = React.createClass({
-  mixins: [ReactMeteorData, DOM],
+  mixins: [ReactMeteorData, Utils],
   getMeteorData () {
     var sub = Meteor.subscribe("users");
     return {

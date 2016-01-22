@@ -1,4 +1,4 @@
-DOM = {
+Utils = {
   getEl (sel) {
     return document.querySelector(sel);
   },
@@ -46,5 +46,30 @@ DOM = {
     if (div) {
       div.style.display = 'none';
     }
-  }
+  },
+  hmsToSecondsOnly(str) {
+    var p = str.split(':'),
+        s = 0, m = 1;
+
+    while (p.length > 0) {
+        s += m * parseInt(p.pop(), 10);
+        m *= 60;
+    }
+    return s;
+  },
+  secondsToHms(d) {
+    d = Number(d);
+    var h = Math.floor(d / 3600);
+    var m = Math.floor(d % 3600 / 60);
+    var s = Math.floor(d % 3600 % 60);
+    return ((h > 0 ? h + ":" + (m < 10 ? "0" : "") : "") + m + ":" + (s < 10 ? "0" : "") + s);
+ },
+ getCourseDuration (lessons) {
+   const self = this;
+   let duration = 0;
+   lessons.forEach(function (l) {
+     duration += self.hmsToSecondsOnly(l.duration);
+   });
+   return self.secondsToHms(duration);
+ }
 }

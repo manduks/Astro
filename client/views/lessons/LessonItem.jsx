@@ -17,7 +17,7 @@ LessonItem = React.createClass({
           </div>
         </section>
         <div className="astro_lesson_item_wrapper-img">
-          <img src={this.props.lesson.image}></img>
+          <img src={this.props.lesson.imageFile}></img>
         </div>
       </div>
     )

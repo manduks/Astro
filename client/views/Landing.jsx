@@ -1,5 +1,15 @@
 Landing = React.createClass({
-  mixins: [DOM],
+  mixins: [Utils, ReactRouter.History],
+  handleLogin() {
+    var self = this;
+    ReactUtils.render(
+      <Login/>,
+      self.getEl('dialog')
+    );
+    Meteor.setTimeout(function(){
+      self.showModal();
+    }, 100);
+  },
   render() {
     return (
         <main>
@@ -13,19 +23,9 @@ Landing = React.createClass({
               </section>
             </header>
             <section className="astro_main_container">
-              <CoursesList/>
+              <CoursesList onCourseDoubleClick={this.onCourseDoubleClick}/>
             </section>
         </main>
     )
-  },
-  handleLogin() {
-    var self = this;
-    ReactDOM.render(
-      <Login/>,
-      self.getEl('dialog')
-    );
-    Meteor.setTimeout(function(){
-      self.showModal();
-    }, 100);
   }
 });

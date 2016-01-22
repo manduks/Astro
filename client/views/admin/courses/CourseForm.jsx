@@ -1,5 +1,5 @@
 CourseForm = React.createClass({
-  mixins: [ReactMeteorData, ReactRouter.History, React.addons.LinkedStateMixin, DOM],
+  mixins: [ReactMeteorData, ReactRouter.History, React.addons.LinkedStateMixin, Utils],
   getMeteorData() {
     return {
       files: S3.collection.find().fetch()
