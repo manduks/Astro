@@ -1,7 +1,7 @@
 App = React.createClass({
   mixins: [ReactRouter.History],
   onCourseDoubleClick() {
-    this.history.pushState(null, '/lessons');
+    this.history.pushState(null, '/lessons/'  + Session.get('currentCourse')._id);
   },
   render() {
     return (

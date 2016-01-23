@@ -14,7 +14,7 @@ AdminApp = React.createClass({
     this.history.pushState(null, '/admin/addCourse');
   },
   onCourseDoubleClick() {
-    this.history.pushState(null, '/admin/lessons');
+    this.history.pushState(null, '/admin/lessons/' + Session.get('currentCourse')._id);
   },
   render () {
     if (!Meteor.user()) {

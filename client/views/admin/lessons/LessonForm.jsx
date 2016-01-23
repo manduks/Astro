@@ -63,15 +63,14 @@ LessonForm = React.createClass({
       order      : state.order.trim(),
       duration   : state.duration.trim(),
       imageFile  : state.imageFile,
-      videoFile  : state.videoFile,
+      videoFile  : '"http://s3.amazonaws.com/astrocms/lessons_assets/288278fe-b749-4293-afc6-547f66db6401.m4v"',//state.videoFile,
       icon       :'http://localhost:3000/img/bookmark.png',
       courseId   : currentCourse && currentCourse._id
     }, this.afterSaveLesson);
   },
   afterSaveLesson() {
     this.hideOperationSpinner();
-    //this.setState({id: null, title: null, description: null, order: null, duration: null, imageFile: null, videoFile: null});
-    this.history.pushState(null, '/admin');
+    this.history.pushState(null, '/admin/lessons/' + Session.get('currentCourse')._id);
   },
   render() {
     let imageFile = this.data.imageFileData;

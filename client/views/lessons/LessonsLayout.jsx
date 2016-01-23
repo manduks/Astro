@@ -1,9 +1,23 @@
 LessonsLayout = React.createClass({
-  mixins: [Utils],
+  mixins: [Utils, ReactMeteorData],
+  getMeteorData () {
+    let sub = Meteor.subscribe("courses"),
+        courseId = this.props.params && this.props.params.courseId;
+    return {
+      course: Courses.find({_id: courseId}).fetch()[0],
+      loadingCourse: !sub.ready()
+    }
+  },
   render() {
-    const course = Session.get('currentCourse') || {},
+    const course = this.data.course || {},
           lessons = (course && course.lessons) || [];
 
+    if (this.loadingCourse) {
+      return <Loader></Loader>
+    }
+    if (course) {
+      Session.set('currentCourse', course);
+    }
     return (
       <section className="astro_main_container">
         <div className="astro_lessons_layout">
@@ -14,7 +28,7 @@ LessonsLayout = React.createClass({
               <span className="astro_lesson_course_info_container_duration">{this.getCourseDuration(lessons)}&nbsp;min</span>
             </div>
           </aside>
-          <LessonsList isAdmin={this.props.isAdmin}/>
+          <LessonsList isAdmin={this.props.isAdmin} lessons={lessons}/>
         </div>
       </section>
     )

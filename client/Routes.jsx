@@ -17,23 +17,23 @@ Routes = React.createClass({
   render: function() {
     return (
       <Router history={browserHistory}>
-        <Route path="/" component={HomeLayout}>
+        <Route path='/' component={HomeLayout}>
           <IndexRoute component={Landing}/>
         </Route>
-        <Route path="/app" component={Auth}>
+        <Route path='/app' component={Auth}>
           <IndexRoute component={App}/>
-          <Route name="lessons" component={LessonsLayout} path="/lessons"/>
-          <Route name="video" component={VideoLayout} path="/video"/>
-          <Route name="profile" component={Profile} path="/profile"/>
+          <Route name='lessons' component={LessonsLayout} path='/lessons/:courseId'/>
+          <Route name='video' component={VideoLayout} path='/video'/>
+          <Route name='profile' component={Profile} path='/profile'/>
         </Route>
-        <Route path="/admin" component={AdminAuth}>
+        <Route path='/admin' component={AdminAuth}>
           <IndexRoute component={AdminApp}/>
-          <Route name="adminLessons" component={AdminLessons} path="/admin/lessons"/>
-          <Route name="adminUsers" component={AdminUsers} path="/admin/users"/>
-          <Route name="addCourse" component={CourseForm} path="/admin/addCourse"/>
-          <Route name="addLesson" component={LessonForm} path="/admin/addLesson"/>
+          <Route name='adminLessons' component={AdminLessons} path='/admin/lessons/:courseId'/>
+          <Route name='adminUsers' component={AdminUsers} path='/admin/users'/>
+          <Route name='addCourse' component={CourseForm} path='/admin/addCourse'/>
+          <Route name='addLesson' component={LessonForm} path='/admin/addLesson'/>
         </Route>
-        <Route path="*" component={NotFound} />
+        <Route path='*' component={NotFound} />
       </Router>
     );
   }
