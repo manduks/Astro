@@ -65,7 +65,7 @@ LessonForm = React.createClass({
       order      : state.order.trim(),
       duration   : state.duration.trim(),
       imageFile  : state.imageFile,
-      videoFile  : '"http://s3.amazonaws.com/astrocms/lessons_assets/288278fe-b749-4293-afc6-547f66db6401.m4v"',//state.videoFile,
+      videoFile  : state.videoFile,
       icon       :'http://localhost:3000/img/bookmark.png',
       courseId   : currentCourse && currentCourse._id
     }, this.afterSaveLesson);

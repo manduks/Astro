@@ -6,7 +6,7 @@ Commentform = React.createClass({
           <img src="http://localhost:3000/img//es6.png"></img>
         </div>
         <div className="astro_comments_form_textfield">
-          <input type="text" name="comment"> </input>
+          <input type="text" name="comment"/>
         </div>
         <Button text="Enviar" size="medium"/>
       </div>

@@ -23,7 +23,7 @@ CommentsList = React.createClass({
     return (
       <section className="astro_comments_list">
         {this.state.comments.map(function (comment) {
-            return <CommentItem  key={comment.lessons} comment={comment}/>;
+            return <CommentItem  key={comment.user} comment={comment}/>;
       }, this)}
       <span className="astro_comments_load_more">
         CARGAR MAS COMENTARIONS ...
