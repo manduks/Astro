@@ -1,10 +1,8 @@
 Commentform = React.createClass({
   mixins: [Utils, React.addons.LinkedStateMixin, ReactMeteorData],
   getMeteorData () {
-    var sub = Meteor.subscribe("users");
     return {
-      currentUser    : Meteor.user(),
-      loadingUser   : !sub.ready()
+      currentUser    : Session.get('currentUser'),
     }
   },
   getInitialState() {
@@ -31,7 +29,7 @@ Commentform = React.createClass({
   },
   render() {
     var user = this.data.currentUser;
-    if (this.data.loadingUser) {
+    if (!user) {
       return <Loader></Loader>
     }
     return (

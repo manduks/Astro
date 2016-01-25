@@ -21,11 +21,10 @@ Auth = React.createClass({
   render: function() {
     let avatar =  (this.data.currentUser && this.data.currentUser.avatar) || '';
     let isAdmin =  (this.data.currentUser && this.data.currentUser.isAdmin) || false;
-
     if (this.usersLoader) {
       return <Loader></Loader>
     }
-
+    Session.set('currentUser', this.data.currentUser);
     return (
       <div className="astro_main_content">
         <Toolbar avatar={avatar} isAdmin={isAdmin}/>
