@@ -5,6 +5,7 @@
   background-color: $primary;
   position: fixed;
   width: 100%;
+  z-index: 2;
 
   span {
     &:hover {
@@ -67,7 +68,6 @@
 
         &:hover {
           ul {
-            z-index: 5;
             display: block;
           }
         }

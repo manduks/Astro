@@ -15,6 +15,23 @@ Meteor.methods({
       _id : id
     },{
       $push: {lessons: data}
-    },{upsert: true});
+    });
+  },
+  updateLesson(data) {
+    var id = data.courseId;
+    delete data.courseId;
+    return Courses.update({
+      _id            : id,
+      'lessons._id'  : data._id
+    },{
+      $set: {
+        'lessons.$.title'      : data.title.trim(),
+        'lessons.$.description': data.description.trim(),
+        'lessons.$.order'      : data.order.trim(),
+        'lessons.$.duration'   : data.duration.trim(),
+        'lessons.$.imageFile'  : data.imageFile,
+        'lessons.$.videoFile'  : data.videoFile
+      }
+    });
   }
 });

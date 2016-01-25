@@ -53,10 +53,12 @@ LessonForm = React.createClass({
     const state = this.state,
     self = this,
     currentCourse = Session.get('currentCourse');
+    let method = state._id ? 'updateLesson' : 'addLesson';
+
     e.preventDefault();
     self.showOperationSpinner();
-    //console.log(self.state);
-    Meteor.call('addLesson', {
+
+    Meteor.call(method, {
       _id        : state._id || Random.id(),
       title      : state.title.trim(),
       description: state.description.trim(),
@@ -71,6 +73,10 @@ LessonForm = React.createClass({
   afterSaveLesson() {
     this.hideOperationSpinner();
     this.history.pushState(null, '/admin/lessons/' + Session.get('currentCourse')._id);
+  },
+  componentDidMount(){
+    this.refs.imageInput.required = !this.state.imageFile;
+    this.refs.videoInput.required = !this.state.videoFile;
   },
   render() {
     let imageFile = this.data.imageFileData;
@@ -102,11 +108,11 @@ LessonForm = React.createClass({
           <div className="astro_form_component_content_textfield2">
             <div className="file_input_wrapper">
               <div className="file_upload_label">{imageInputLabel}</div>
-              <input type="file" name="uploadImage" ref="imageInput" onChange={this.uploadLessonImage} className="upload_field" title="Elegir imagen" required/>
+              <input type="file" name="uploadImage" ref="imageInput" onChange={this.uploadLessonImage} className="upload_field" title="Elegir imagen" defaultValue={this.state.imageFile}/>
             </div>
             <div className="file_input_wrapper">
               <div className="file_upload_label">{videoInputLabel}</div>
-              <input type="file" name="uploadVideo" ref="videoInput" onChange={this.uploadLessonVideo} className="upload_field" title="Elegir video" required/>
+              <input type="file" name="uploadVideo" ref="videoInput" onChange={this.uploadLessonVideo} className="upload_field" title="Elegir video" defaultValue={this.state.videoFile}/>
             </div>
           </div>
           <input type="submit" className="astro_button large" value= "Guardar"/>
