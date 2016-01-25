@@ -1,4 +1,3 @@
-
 Meteor.methods({
   updateUserProfile: function (userData) {
     Meteor.users.update({

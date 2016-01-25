@@ -35,7 +35,7 @@ VideoLayout = React.createClass({
             </li>
           </ul>
         </div>
-        <CommentsList/>
+        <CommentsList lessonId={this.state._id}/>
         <Commentform/>
         <Footer/>
       </section>
