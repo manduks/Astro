@@ -25,7 +25,7 @@ Commentform = React.createClass({
   },
   afterSaveComment(){
     this.hideOperationSpinner();
-    this.refs.commentInput.value = '';
+    this.setState({comment: ''});
   },
   render() {
     var user = this.data.currentUser;
@@ -38,7 +38,7 @@ Commentform = React.createClass({
           <img src={user.avatar}></img>
         </div>
         <div className="astro_comments_form_textfield">
-          <input ref="commentInput" type="text" valueLink={this.linkState('comment')} name="comment" required/>
+          <input type="text" valueLink={this.linkState('comment')} name="comment" required/>
         </div>
         <input type="submit" className="astro_button medium" value="Enviar"/>
       </form>

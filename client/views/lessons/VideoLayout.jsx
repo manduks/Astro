@@ -1,5 +1,14 @@
 VideoLayout = React.createClass({
-  mixins: [Utils],
+  mixins: [Utils, ReactMeteorData],
+  getMeteorData() {
+    var sub = Meteor.subscribe("comments");
+    return {
+      comments: Comments.find({
+        sourceId : this.state._id
+      }).fetch(),
+      loadingComments: !sub.ready()
+    }
+  },
   getInitialState() {
     var lesson = Session.get('currentLesson') || {};
     return lesson;
@@ -10,6 +19,11 @@ VideoLayout = React.createClass({
   },
   render() {
     const lesson = this.state;
+
+    if (this.data.loadingComments) {
+        return <Loader></Loader>
+    }
+    
     return (
       <section className="astro_main_container">
         <video className="astro_video" ref="video" controls>
@@ -25,7 +39,7 @@ VideoLayout = React.createClass({
           </div>
         </div>
         <div className="astro_video_comments_info">
-          <span>23 COMMENTS</span>
+          <span>{this.data.comments.length} COMMENTS</span>
           <ul>
             <li>
               Nuevos
@@ -35,7 +49,7 @@ VideoLayout = React.createClass({
             </li>
           </ul>
         </div>
-        <CommentsList lessonId={this.state._id}/>
+        <CommentsList comments={this.data.comments}/>
         <Commentform/>
         <Footer/>
       </section>

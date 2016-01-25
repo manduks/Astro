@@ -5,7 +5,7 @@
   .astro_comment_item_wrapper{
     display: flex;
     width: 945px;
-    height: 100px;
+    min-height: 100px;
     border-bottom: 1px solid $footer;
     margin-top: 60px;
     .astro_comment_item_wrapper_avatar{
