@@ -10,6 +10,9 @@ Landing = React.createClass({
       self.showModal();
     }, 100);
   },
+  onCourseDoubleClick(){
+    this.handleLogin();
+  },
   render() {
     return (
         <main>

@@ -5,6 +5,15 @@ LessonItem = React.createClass({
       selectedLesson: Session.get('currentLesson'),
     }
   },
+  onLessonDoubleClick() {
+    if (this.props.lesson.order == 1){
+      return this.props.onLessonDoubleClick();
+    }
+    if (this.ownsCourse() || Session.get('currentUser').isAdmin){
+      return this.props.onLessonDoubleClick();
+    }
+    alert('buy course');
+  },
   render() {
     const self = this;
     let classes = 'astro_lesson_item_wrapper';
@@ -14,7 +23,7 @@ LessonItem = React.createClass({
       }
     }
     return (
-      <div className={classes} onDoubleClick={this.props.onLessonDoubleClick} onClick={this.props.onLessonClick}>
+      <div className={classes} onDoubleClick={this.onLessonDoubleClick} onClick={this.props.onLessonClick}>
         <section className="astro_lesson_item_wrapper-inner">
           <div className="astro_lesson_item_wrapper-inner-icon">
             <img src={this.props.lesson.icon}></img>

@@ -33,6 +33,7 @@ VideoLayout = React.createClass({
     if (this.data.loadingComments) {
         return <Loader></Loader>
     }
+
     return (
       <section className="astro_main_container">
         <video className="astro_video" ref="video" controls>

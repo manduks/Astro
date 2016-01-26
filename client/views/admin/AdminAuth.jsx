@@ -27,7 +27,7 @@ AdminAuth = React.createClass({
     if (this.usersLoader) {
       return <Loader></Loader>
     }
-
+    Session.set('currentUser', this.data.currentUser);
     return (
       <div className="astro_main_content">
         <Toolbar avatar={avatar} isAdmin={isAdmin}/>

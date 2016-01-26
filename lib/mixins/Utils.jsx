@@ -71,5 +71,12 @@ Utils = {
      duration += self.hmsToSecondsOnly(l.duration);
    });
    return self.secondsToHms(duration);
+ },
+ ownsCourse() {
+   const courses = Session.get('currentUser').courses || [];
+   const currentCourse = Session.get('currentCourse');
+   return courses.some(function (item) {
+     return currentCourse._id === item;
+   });
  }
 }
