@@ -5,9 +5,9 @@ CommentsList = React.createClass({
         {this.props.comments.map(function (comment) {
             return <CommentItem  key={comment._id} comment={comment}/>;
       }, this)}
-      <span className="astro_comments_load_more">
+      {/*<span className="astro_comments_load_more">
         CARGAR MAS COMENTARIONS ...
-      </span>
+      </span>*/}
     </section>
     )
   }
