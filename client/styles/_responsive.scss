@@ -1,18 +1,38 @@
 /* For mobile phones: */
 @media only screen and (max-width: 836px) {
-  .astro_courses_list{
-    .astro_course_item_wrapper{
+  .astro_courses_list {
+    .astro_course_item_wrapper {
       width: 99% !important;
     }
   }
-  .astro_header{
-    .astro_legend{
+  .astro_header {
+    .astro_legend {
       font-size: 40px;
     }
   }
-  .astro_lessons_layout{
+  .astro_lessons_layout {
     .astro_lesson_course_info{
       display: none;
+    }
+  }
+  .astro_payment {
+    .astro_payment_container {
+      flex-direction: column;
+      height: 100%;
+      .astro_payment_left_container {
+        width: 100%;
+        background-image:none;
+        background-color: $secondary;
+      }
+      .astro_payment_right_container {
+        width: 100%;
+        height: 400px;
+        flex:none;
+        //border: 3px red solid;
+        h1 {
+          color: $secondary;
+        }
+      }
     }
   }
 }

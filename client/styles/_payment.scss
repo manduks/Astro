@@ -6,7 +6,7 @@
   height: 100vh;
   width: 100%;
   .astro_payment_container {
-    background: #FFFFFF;
+    background: $light;
     border-radius: 9px;
     height: 783px;
     width : 938px;
@@ -19,19 +19,19 @@
       justify-content: center;
       width: 376px;
       height: 100%;
-      background-image: url(img/iphone-624709_1920.png);
+      background-color: $secondary;
       span {
         color: $light;
         font-family: Gotham-Thin;
         font-size: 64px;
-        color: #FFFFFF;
+        color: $light;
         line-height: 76px;
       }
       div {
         color: $light;
         font-family: Gotham-Thin;
         font-size: 20px;
-        color: #FFFFFF;
+        color: $light;
         line-height: 28px;
         width: 80%;
         text-align: center;
@@ -46,7 +46,6 @@
       h1 {
         font-family: Gotham-Light;
         font-size: 48px;
-        color: #0C2543;
         color: $secondary;
         line-height: 57px;
       }
