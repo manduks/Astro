@@ -9,7 +9,7 @@
   .astro_payment_container {
     background: $light;
     border-radius: 9px;
-    height: 783px;
+    height: 583px;
     width : 938px;
     display: flex;
     margin-top: -100px;
@@ -20,6 +20,8 @@
       justify-content: center;
       width: 376px;
       height: 100%;
+      border-top-left-radius: 9px;
+      border-bottom-left-radius: 9px;
       background-color: $secondary;
       span {
         color: $light;
