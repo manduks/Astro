@@ -25,6 +25,7 @@ Routes = React.createClass({
           <Route name='lessons' component={LessonsLayout} path='/lessons/:courseId'/>
           <Route name='video' component={VideoLayout} path='/video'/>
           <Route name='profile' component={Profile} path='/profile'/>
+          <Route name='buy' component={BuyCourse} path='/buy'/>
         </Route>
         <Route path='/admin' component={AdminAuth}>
           <IndexRoute component={AdminApp}/>
