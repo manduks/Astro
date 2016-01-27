@@ -29,10 +29,12 @@ VideoLayout = React.createClass({
   },
   render() {
     const lesson = this.state.lesson;
-
+    let numComments = '';
     if (this.data.loadingComments) {
         return <Loader></Loader>
     }
+
+    numComments = this.data.comments.length + ' COMMENTS';
 
     return (
       <section className="astro_main_container">
@@ -49,7 +51,7 @@ VideoLayout = React.createClass({
           </div>
         </div>
         <div className="astro_video_comments_info">
-          <span>{this.data.comments.length} COMMENTS</span>
+          <span>{numComments}</span>
           <ul>
             <li onClick={this.onSortComments.bind(this, -1)} className={this.getSelection(-1)}>
               Nuevos
