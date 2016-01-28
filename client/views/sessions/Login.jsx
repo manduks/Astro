@@ -3,14 +3,13 @@ Login = React.createClass({
   render() {
     return (
       <div className="astro_login">
-        <img src="http://localhost:3000/img/logo-medium.png"></img>
         <h2>CODETLAN</h2>
+        <img src="http://localhost:3000/img/logo-medium.png"></img>
+        <h2>INICIAR SESIÓN</h2>
         <section className="github">
-          <h2>Iniciar sesión con</h2>
           <Button size="large" text="Github" onClick={this.loginWithGithub}/>
         </section>
         <section className="twitter">
-          <h2>Iniciar sesión con</h2>
           <Button size="large" text="Twitter" onClick={this.loginWithTwitter}/>
         </section>
       </div>

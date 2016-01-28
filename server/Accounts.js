@@ -39,6 +39,7 @@ Accounts.onCreateUser(function(options, user) {
         user.avatar = user.services['twitter'].profile_image_url;
     }
     user.name = user.profile.name;
+    user.courses = [];
     user.isAdmin = (admins.indexOf(user.email) > -1);
     return user;
 });

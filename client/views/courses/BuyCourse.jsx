@@ -1,10 +1,13 @@
 BuyCourse = React.createClass({
-  /*mixins: [ReactMeteorData, Utils],
-  getMeteorData () {
-    return {
-      selectedCourse: Session.get('currentCourse'),
+  mixins: [ReactRouter.History, Utils],
+  componentDidMount(){
+    if (!Session.get('currentCourse')){
+      return this.history.pushState(null, '/app');
     }
-  },*/
+    /*if (this.ownsCourse()) {
+       return this.history.pushState(null, '/lessons/' + Session.get('currentCourse')._id);
+    }*/
+  },
   payWithCompropago() {
     alert('Compropago');
   },
@@ -16,7 +19,8 @@ BuyCourse = React.createClass({
       <section className="astro_payment">
         <section className="astro_payment_container">
           <section className="astro_payment_left_container">
-            <span>$649 MN</span>
+            <h1>COMPRAR CURSO</h1>
+            <span>$200 MXN</span>
             <div>MeteorJS, Crea tu primer applicación lista para producción.</div>
           </section>
           <section className="astro_payment_right_container">

@@ -1,5 +1,5 @@
 LessonItem = React.createClass({
-  mixins: [ReactMeteorData, Utils],
+  mixins: [ReactMeteorData, Utils, ReactRouter.History],
   getMeteorData () {
     return {
       selectedLesson: Session.get('currentLesson'),
@@ -12,7 +12,7 @@ LessonItem = React.createClass({
     if (this.ownsCourse() || Session.get('currentUser').isAdmin){
       return this.props.onLessonDoubleClick();
     }
-    alert('buy course');
+    this.history.pushState(null, '/buy');
   },
   render() {
     const self = this;
