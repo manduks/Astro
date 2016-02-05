@@ -12,7 +12,9 @@ CourseForm = React.createClass({
       title        : course.title,
       imageFile    : course.imageFile,
       description  : course.description,
-      price        : course.price
+      price        : course.price,
+      paypalId     : course.paypalId,
+      lessons      : course.lessons || []
     };
   },
   uploadCourseImageChange(e) {
@@ -43,7 +45,8 @@ CourseForm = React.createClass({
       description  : state.description.trim(),
       price        : state.price.trim(),
       image        : state.imageFile,
-      lessons      : []
+      paypalId     : state.paypalId,
+      lessons      : state.lessons || []
     }, this.afterSaveCourse);
   },
   afterSaveCourse() {
@@ -68,6 +71,9 @@ CourseForm = React.createClass({
           </div>
           <div className="astro_form_component_content_textfield2">
             <input type="text" name="price" valueLink={this.linkState('price')} autoComplete="off" placeholder="Precio en pesos" required/>
+          </div>
+          <div className="astro_form_component_content_textfield2">
+            <input type="text" name="paypalId" valueLink={this.linkState('paypalId')} autoComplete="off" placeholder="Id de botton de paypal" required/>
           </div>
           <div className="astro_form_component_content_textfield2">
             <div className="file_input_wrapper">

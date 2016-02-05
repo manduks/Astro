@@ -24,3 +24,7 @@ http
 lepozepo:s3
 random
 momentjs:moment
+meteorhacks:npm
+
+
+npm-container
