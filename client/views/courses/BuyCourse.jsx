@@ -14,12 +14,13 @@ BuyCourse = React.createClass({
     const course = Session.get('currentCourse'),
           user = Session.get('currentUser'),
     obj = {
-      "product_price": course.price,
-      "product_name": course.title,
-      "product_id": course._id,
+      "order_id" : course._id,
+      "order_price": course.price,
+      "order_name": course.title,
       "image_url": course.imageFile,
-      "customer_name": user.name,
-      "customer_email": user.email
+      "customer_name": "Armando Gonzalez",
+      "customer_email": "iam@armando.mx",
+      "payment_type": "OXXO"
     };
     Meteor.call('compropagoCharge', obj, function(error, result) {
       var instructions;
@@ -31,8 +32,12 @@ BuyCourse = React.createClass({
       }
     });
   },
-  payWithPaypal() {
-    this.refs.paypalForm.submit();
+  payWithOxxo() {
+    alert('Oxxo');
+  },
+  payWithCC(e) {
+    e.preventDefault();
+    this.showOperationSpinner();
   },
   render() {
     var course = Session.get('currentCourse');
@@ -45,19 +50,58 @@ BuyCourse = React.createClass({
             <div>{course.title + ', ' + course.description}</div>
           </section>
           <section className="astro_payment_right_container">
-            <h1>Puedes pagar con</h1>
-            <div>
-              <section className="astro_payment_button" onClick={this.payWithCompropago}>
-                <img src="http://localhost:3000/img/compropago-logo2.png"/>
-              </section>
+            <div className="astro_pay_with_cc">
+              <form className ="astro_payment_form" onSubmit={this.payWithCC}>
+                <h1>Pagar con Tarjeta</h1>
+                <div>
+                  <input type="text" name="name" autoComplete="off" placeholder="Nombre del tarjetahabiente" required/>
+                </div>
+                <div>
+                  <input type="text" name="number" autoComplete="off" placeholder="Número de tarjeta de crédito" required/>
+                </div>
+                <span>Fecha de expiracion MM/AAAA</span>
+                <div className="astro_payment_form_expiration_date">
+                  <select>
+                    <option value="01">01</option>
+                    <option value="02">02</option>
+                    <option value="03">03</option>
+                    <option value="05">04</option>
+                    <option value="06">05</option>
+                    <option value="07">06</option>
+                    <option value="08">07</option>
+                    <option value="09">08</option>
+                    <option value="10">09</option>
+                    <option value="11">10</option>
+                    <option value="12">11</option>
+                    <option value="12">12</option>
+                  </select>
+                  <select>
+                    <option value="2016">2016</option>
+                    <option value="2017">2017</option>
+                    <option value="2018">2018</option>
+                    <option value="2019">2019</option>
+                    <option value="2020">2020</option>
+                    <option value="2021">2021</option>
+                    <option value="2022">2022</option>
+                    <option value="2023">2023</option>
+                    <option value="2024">2024</option>
+                    <option value="2025">2025</option>
+                    <option value="2026">2026</option>
+                    <option value="2027">2027</option>
+                  </select>
+                </div>
+                <div>
+                  <input  type="text" name="cvc" size="4" autoComplete="off" placeholder="CVC/CVV" required/>
+                </div>
+                <input type="submit" className="astro_payment_button payWithCC" value= "Pagar"/>
+              </form>
             </div>
-            <div>
-              <section className="astro_payment_button" onClick={this.payWithPaypal}>
-                <img src="http://localhost:3000/img/paypal-logo2.png"/>
-                <form ref="paypalForm" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-                  <input type="hidden" name="cmd" value="_s-xclick"/>
-                  <input type="hidden" name="hosted_button_id" value={course.paypalId}/>
-                </form>
+            <div className="astro_pay_with_other">
+              <h2>
+                <span>o pagar con</span>
+              </h2>
+              <section className="astro_payment_button" onClick={this.payWithOxxo}>
+                <img src="http://localhost:3000/img/oxxo.png" width="76px"/>
               </section>
             </div>
           </section>

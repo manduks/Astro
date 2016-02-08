@@ -1,5 +1,5 @@
 .astro_payment {
-  background-color: lighten(#555, 60);// #2E6CB5;
+  background-color: lighten(#555, 60);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -29,8 +29,6 @@
         font-family: Gotham-Thin;
         font-size: 34px;
         line-height: 38px;
-        //margin-bottom: 40px;
-        //margin-top: -100px;
       }
       span {
         color: $light;
@@ -55,16 +53,85 @@
       flex:1;
       h1 {
         font-family: Gotham-Light;
-        font-size: 48px;
+        font-size: 30px;
         color: lighten($dark, 30);
-        line-height: 57px;
+        line-height: 45px;
       }
-      div {
+      h2 {
+        font-family: Gotham-Light;
+        font-size: 16px;
+        color: #555;
+        line-height: 20px;
+        text-align: center;
+        margin-top: -48px;
+        margin-bottom: 15px;
+        span{
+          padding: 15px;
+          background-color: $light;
+        }
+      }
+      .astro_pay_with_cc .astro_pay_with_other{
         width: 100%;
         height: 100px;
         display: flex;
         align-items: center;
         justify-content: center;
+      }
+      .astro_pay_with_cc {
+        flex: 1;
+      }
+      .astro_pay_with_other {
+        flex: 1;
+      }
+      .astro_payment_form {
+        border-bottom: 1px solid #EEE;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        padding-top: 30px;
+        padding-bottom: 20px;
+        input {
+          border: 1px solid #C6CFD9;
+          border-radius: 4px;
+          width: 320px;
+          height: 40px;
+          font-size: 18px;
+          color: $secondary;
+          text-align: center;
+          font-family: Gotham-Book;
+          line-height: 22px;
+          margin: 10px;
+          padding: 5px;
+        }
+        select {
+          border: 1px solid #C6CFD9;
+          border-radius: 4px;
+          width: 320px;
+          height: 40px;
+          font-size: 18px;
+          color: $dark;
+          font-family: Gotham-Book;
+          line-height: 22px;
+          margin: 10px;
+          padding: 5px;
+        }
+        .payWithCC {
+          background: $primary;
+          color: $light;
+          height: 54px;
+          width: 310px;
+          font-size: 24px;
+        }
+      }
+      .astro_payment_form_expiration_date {
+        display: flex;
+        width: 320px;
+        select {
+          flex: 1;
+        }
       }
       .astro_payment_button {
         display: flex;
@@ -74,12 +141,26 @@
         border-radius: 4px;
         border: 1px solid #AAA;
         height: 54px;
-        width: 404px;
+        width: 304px;
         cursor: pointer;
         &:hover{
           border: 1px solid $primary;
-          //background: lighten($secondary, 0);
+          img {
+            -webkit-filter: grayscale(0%); /* Chrome, Safari, Opera */
+            filter: grayscale(0%);
+          }
         }
+        img {
+          -webkit-filter: grayscale(10%); /* Chrome, Safari, Opera */
+          filter: grayscale(10%);
+        }
+      }
+      span {
+        font-family: Gotham-Light;
+        font-size: 16px;
+        color: #555;
+        line-height: 20px;
+        text-align: center;
       }
     }
   }
