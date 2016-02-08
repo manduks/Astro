@@ -1,9 +1,9 @@
-var request = Meteor.npmRequire('request'),
+var request = Meteor.npmRequire('conekta'),
   COMPROPAGO_DEVELOPMENT_KEY = 'e58dc4e347211',
   COMPROPAGO_PRODUCTION_KEY = '0875847df0f31';
 
 Meteor.methods({
-  compropagoCharge: function(chargeObject) {
+  chargeCreditCard: function(chargeObject) {
     var auth = new Buffer(COMPROPAGO_DEVELOPMENT_KEY + ':').toString('base64');
     var options = {
       url: 'https://api.compropago.com/v1/charges',
