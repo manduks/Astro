@@ -1,46 +1,60 @@
 BuyCourse = React.createClass({
   mixins: [
-    ReactRouter.History, Utils
+    ReactRouter.History, React.addons.LinkedStateMixin, Utils
   ],
+  getInitialState() {
+    return {
+      name  : '',
+      number: '',
+      month : 01,
+      year  : 2016,
+      cvc   : '',
+      course: ''
+    }
+  },
   componentDidMount() {
     if (!Session.get('currentCourse')) {
       return this.history.pushState(null, '/app');
     }
-    /*if (this.ownsCourse()) {
-       return this.history.pushState(null, '/lessons/' + Session.get('currentCourse')._id);
-    }*/
   },
-  payWithCompropago() {
-    const course = Session.get('currentCourse'),
-          user = Session.get('currentUser'),
-    obj = {
-      "order_id" : course._id,
-      "order_price": course.price,
-      "order_name": course.title,
-      "image_url": course.imageFile,
-      "customer_name": "Armando Gonzalez",
-      "customer_email": "iam@armando.mx",
-      "payment_type": "OXXO"
-    };
-    Meteor.call('compropagoCharge', obj, function(error, result) {
-      var instructions;
-      if (error) {
-        console.log('Error', 'No pudimos procesar la petición de pago, intentalo de nuevo ...');
-      } else {
-        console.log(result);
-        instructions = result.payment_instructions;
-      }
-    });
+  handleChangeMonth(newValue){
+    this.setState({month: newValue});
+  },
+  handleChangeYear(newValue){
+    this.setState({year: newValue});
   },
   payWithOxxo() {
     alert('Oxxo');
   },
   payWithCC(e) {
+    const self = this;
     e.preventDefault();
+    this.state.course = Session.get('currentCourse');
     this.showOperationSpinner();
+    Meteor.call('chargeCreditCard', this.state, function(error, result) {
+      if (error) {
+        console.log('Error', 'No pudimos procesar la petición de pago, intentalo de nuevo ...');
+      } else {
+        self.hideOperationSpinner();
+        if (result.object === 'error'){
+          alert(result.message_to_purchaser);
+        } else {
+          alert('Exito!!');
+        }
+      }
+    });
   },
   render() {
-    var course = Session.get('currentCourse');
+    const course = Session.get('currentCourse'),
+    valueLinkMonth = {
+      value: this.state.month,
+      requestChange: this.handleChangeMonth
+    },
+    valueLinkYear = {
+      value: this.state.year,
+      requestChange: this.handleChangeYear
+    };
+
     return (
       <section className="astro_payment">
         <section className="astro_payment_container">
@@ -54,14 +68,14 @@ BuyCourse = React.createClass({
               <form className ="astro_payment_form" onSubmit={this.payWithCC}>
                 <h1>Pagar con Tarjeta</h1>
                 <div>
-                  <input type="text" name="name" autoComplete="off" placeholder="Nombre del tarjetahabiente" required/>
+                  <input type="text" name="name" valueLink={this.linkState('name')} autoComplete="off" placeholder="Nombre del tarjetahabiente" required/>
                 </div>
                 <div>
-                  <input type="text" name="number" autoComplete="off" placeholder="Número de tarjeta de crédito" required/>
+                  <input type="text" name="number" valueLink={this.linkState('number')} autoComplete="off" placeholder="Número de tarjeta de crédito" required/>
                 </div>
                 <span>Fecha de expiracion MM/AAAA</span>
                 <div className="astro_payment_form_expiration_date">
-                  <select>
+                  <select valueLink={valueLinkMonth}>
                     <option value="01">01</option>
                     <option value="02">02</option>
                     <option value="03">03</option>
@@ -75,7 +89,7 @@ BuyCourse = React.createClass({
                     <option value="12">11</option>
                     <option value="12">12</option>
                   </select>
-                  <select>
+                  <select valueLink={valueLinkYear}>
                     <option value="2016">2016</option>
                     <option value="2017">2017</option>
                     <option value="2018">2018</option>
@@ -91,7 +105,7 @@ BuyCourse = React.createClass({
                   </select>
                 </div>
                 <div>
-                  <input  type="text" name="cvc" size="4" autoComplete="off" placeholder="CVC/CVV" required/>
+                  <input  type="text" name="cvc" size="4" autoComplete="off" valueLink={this.linkState('cvc')}  placeholder="CVC/CVV" required/>
                 </div>
                 <input type="submit" className="astro_payment_button payWithCC" value= "Pagar"/>
               </form>

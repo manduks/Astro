@@ -1,26 +1,36 @@
-var request = Meteor.npmRequire('conekta'),
-  COMPROPAGO_DEVELOPMENT_KEY = 'e58dc4e347211',
-  COMPROPAGO_PRODUCTION_KEY = '0875847df0f31';
+var conekta = Meteor.npmRequire('conekta'),
+    Future = Meteor.npmRequire('fibers/future');
+    COMPROPAGO_DEVELOPMENT_KEY = 'e58dc4e347211',
+    COMPROPAGO_PRODUCTION_KEY = '0875847df0f31';
+
+conekta.api_key = 'key_eYvWV7gSDkNYXsmr';
+conekta.locale = 'es';
 
 Meteor.methods({
   chargeCreditCard: function(chargeObject) {
-    var auth = new Buffer(COMPROPAGO_DEVELOPMENT_KEY + ':').toString('base64');
-    var options = {
-      url: 'https://api.compropago.com/v1/charges',
-      method: 'POST',
-      headers: {
-        'Authorization': 'Basic ' + auth,
-        'Accept': 'application/compropago',
-        'Content-Type': 'application/json'
-      },
-      data: chargeObject
-    };
-    request(options, function (error, response, body) {
-      if (!error && response.statusCode == 200) {
-        console.log(body);
-        return body;
+    var course = chargeObject.course,
+        user = Meteor.user(),
+        future = new Future();
+
+    conekta.Charge.create({
+      description: course.title,
+      amount: course.price,
+      currency: 'MXN',
+      reference_id: course._id,
+      card: chargeObject.number,
+      details: {
+        name: user.name,
+        email: user.email,
+        customer: {
+          logged_in: true
+        }
       }
-      console.log(error);
+    }, function(err, res) {
+      if (err) {
+        return future["return"](err, null)
+      }
+      return future["return"](null, res.toObject())
     });
+    return future.wait();
   }
 });
