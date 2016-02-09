@@ -4,11 +4,11 @@ BuyCourse = React.createClass({
   ],
   getInitialState() {
     return {
-      name  : '',
-      number: '',
-      month : 01,
+      name  : 'Armando Gonzalez',
+      number: '4242424242424242',
+      month : 02,
       year  : 2016,
-      cvc   : '',
+      cvc   : '232',
       course: ''
     }
   },
@@ -27,22 +27,31 @@ BuyCourse = React.createClass({
     alert('Oxxo');
   },
   payWithCC(e) {
-    const self = this;
     e.preventDefault();
+    Conekta.setPublishableKey('key_MxhSqdJdtsmBy64o');
     this.state.course = Session.get('currentCourse');
     this.showOperationSpinner();
+    Conekta.token.create(this.refs.CCForm, this.conektaSuccessResponseHandler, this.conektaErrorResponseHandler);
+  },
+  conektaSuccessResponseHandler(token) {
+    const self = this;
+    this.state.token = token;
     Meteor.call('chargeCreditCard', this.state, function(error, result) {
       if (error) {
         console.log('Error', 'No pudimos procesar la petición de pago, intentalo de nuevo ...');
       } else {
         self.hideOperationSpinner();
         if (result.object === 'error'){
-          alert(result.message_to_purchaser);
+          self.showAlert('error', result.message_to_purchaser);
         } else {
-          alert('Exito!!');
+          self.showAlert('success', result.status);
         }
       }
     });
+  },
+  conektaErrorResponseHandler(error) {
+    this.showAlert('error', error.message_to_purchaser);
+    this.hideOperationSpinner();
   },
   render() {
     const course = Session.get('currentCourse'),
@@ -65,17 +74,17 @@ BuyCourse = React.createClass({
           </section>
           <section className="astro_payment_right_container">
             <div className="astro_pay_with_cc">
-              <form className ="astro_payment_form" onSubmit={this.payWithCC}>
+              <form ref="CCForm" className="astro_payment_form" onSubmit={this.payWithCC}>
                 <h1>Pagar con Tarjeta</h1>
                 <div>
-                  <input type="text" name="name" valueLink={this.linkState('name')} autoComplete="off" placeholder="Nombre del tarjetahabiente" required/>
+                  <input type="text" name="name" valueLink={this.linkState('name')} autoComplete="off" placeholder="Nombre del tarjetahabiente" data-conekta="card[name]" required/>
                 </div>
                 <div>
-                  <input type="text" name="number" valueLink={this.linkState('number')} autoComplete="off" placeholder="Número de tarjeta de crédito" required/>
+                  <input type="text" name="number" valueLink={this.linkState('number')} autoComplete="off" placeholder="Número de tarjeta de crédito" data-conekta="card[number]" required/>
                 </div>
                 <span>Fecha de expiracion MM/AAAA</span>
                 <div className="astro_payment_form_expiration_date">
-                  <select valueLink={valueLinkMonth}>
+                  <select valueLink={valueLinkMonth} data-conekta="card[exp_month]" >
                     <option value="01">01</option>
                     <option value="02">02</option>
                     <option value="03">03</option>
@@ -89,7 +98,7 @@ BuyCourse = React.createClass({
                     <option value="12">11</option>
                     <option value="12">12</option>
                   </select>
-                  <select valueLink={valueLinkYear}>
+                  <select valueLink={valueLinkYear} data-conekta="card[exp_year]">
                     <option value="2016">2016</option>
                     <option value="2017">2017</option>
                     <option value="2018">2018</option>
@@ -105,7 +114,7 @@ BuyCourse = React.createClass({
                   </select>
                 </div>
                 <div>
-                  <input  type="text" name="cvc" size="4" autoComplete="off" valueLink={this.linkState('cvc')}  placeholder="CVC/CVV" required/>
+                  <input  type="text" name="cvc" size="4" autoComplete="off" valueLink={this.linkState('cvc')}  placeholder="CVC/CVV" data-conekta="card[cvc]" required/>
                 </div>
                 <input type="submit" className="astro_payment_button payWithCC" value= "Pagar"/>
               </form>

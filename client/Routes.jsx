@@ -45,4 +45,10 @@ Meteor.startup(function() {
     app.id = 'App';
     document.body.appendChild(app);
     ReactDOM.render(<Routes/>, app);
+    //Load extenal scripts
+
+    var script = document.createElement('script');
+    script.setAttribute('type', 'text/javascript');  // optional
+    script.setAttribute('src', 'https://conektaapi.s3.amazonaws.com/v0.3.2/js/conekta.js');
+    document.getElementsByTagName('head')[0].appendChild(script);
 });

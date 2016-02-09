@@ -78,5 +78,22 @@ Utils = {
    return courses.some(function (item) {
      return currentCourse._id === item;
    });
+ },
+ showAlert(type, text) {
+   const titles = {
+     success: 'Excelente!',
+     error  : 'Ups...',
+     warning: 'Atención'
+   };
+   swal({
+     title             : titles[type],
+     text              : text,
+     type              : type,
+     howCancelButton   : true,
+     confirmButtonColor: '#D7274D',
+     allowOutsideClick : true,
+     allowEscapeKey    : true,
+     confirmButtonText : 'Aceptar',
+   });
  }
 }
