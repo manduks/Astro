@@ -9,7 +9,8 @@ BuyCourse = React.createClass({
       month : 02,
       year  : 2016,
       cvc   : '232',
-      course: ''
+      course: '',
+      procesando : false
     }
   },
   componentDidMount() {
@@ -28,6 +29,10 @@ BuyCourse = React.createClass({
   },
   payWithCC(e) {
     e.preventDefault();
+    if (this.state.procesando) {
+      return;
+    }
+    this.setState({procesando: true});
     Conekta.setPublishableKey('key_MxhSqdJdtsmBy64o');
     this.state.course = Session.get('currentCourse');
     this.showOperationSpinner();
@@ -37,21 +42,26 @@ BuyCourse = React.createClass({
     const self = this;
     this.state.token = token;
     Meteor.call('chargeCreditCard', this.state, function(error, result) {
+      self.setState({procesando: false});
       if (error) {
-        console.log('Error', 'No pudimos procesar la petición de pago, intentalo de nuevo ...');
+        self.showAlert('error', 'No pudimos procesar la petición de pago, intentalo de nuevo ...');
       } else {
         self.hideOperationSpinner();
         if (result.object === 'error'){
           self.showAlert('error', result.message_to_purchaser);
         } else {
-          self.showAlert('success', result.status);
+          self.showAlert('success', 'Pago realizado con éxito!', self.redirectToCourse);
         }
       }
     });
   },
+  redirectToCourse() {
+    this.history.pushState(null, '/lessons/' + this.state.course._id);
+  },
   conektaErrorResponseHandler(error) {
     this.showAlert('error', error.message_to_purchaser);
     this.hideOperationSpinner();
+    this.setState({procesando: false});
   },
   render() {
     const course = Session.get('currentCourse'),
@@ -62,7 +72,8 @@ BuyCourse = React.createClass({
     valueLinkYear = {
       value: this.state.year,
       requestChange: this.handleChangeYear
-    };
+    },
+    buttonText = this.state.procesando ? 'Procesando pago ...' : 'Pagar';
 
     return (
       <section className="astro_payment">
@@ -116,7 +127,7 @@ BuyCourse = React.createClass({
                 <div>
                   <input  type="text" name="cvc" size="4" autoComplete="off" valueLink={this.linkState('cvc')}  placeholder="CVC/CVV" data-conekta="card[cvc]" required/>
                 </div>
-                <input type="submit" className="astro_payment_button payWithCC" value= "Pagar"/>
+                <input type="submit" className="astro_payment_button payWithCC" value= {buttonText}/>
               </form>
             </div>
             <div className="astro_pay_with_other">

@@ -79,7 +79,7 @@ Utils = {
      return currentCourse._id === item;
    });
  },
- showAlert(type, text) {
+ showAlert(type, text, callback) {
    const titles = {
      success: 'Excelente!',
      error  : 'Ups...',
@@ -94,6 +94,6 @@ Utils = {
      allowOutsideClick : true,
      allowEscapeKey    : true,
      confirmButtonText : 'Aceptar',
-   });
+   }, callback);
  }
 }

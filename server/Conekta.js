@@ -1,7 +1,5 @@
 var conekta = Meteor.npmRequire('conekta'),
     Future = Meteor.npmRequire('fibers/future');
-    COMPROPAGO_DEVELOPMENT_KEY = 'e58dc4e347211',
-    COMPROPAGO_PRODUCTION_KEY = '0875847df0f31';
 
 conekta.api_key = 'key_RzxqmGEsnUnRtiLa';
 conekta.locale = 'es';
@@ -27,13 +25,19 @@ Meteor.methods({
           logged_in: true
         }
       }
-    }, function(err, res) {
+    }, Meteor.bindEnvironment(function(err, res) {
       if (err) {
         console.log(err);
         return future["return"](err)
       }
+      //agregamos el usuario al curso
+      Meteor.users.update({
+        _id : Meteor.userId()
+      },{
+        $push: {courses: course._id}
+      });
       return future["return"](res.toObject())
-    });
+    }));
     return future.wait();
   }
 });
