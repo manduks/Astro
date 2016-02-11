@@ -20,3 +20,11 @@ Meteor.methods({
     });
   }
 });
+
+/* Model access/deny rules */
+//only current users and admin can updates users
+Meteor.users.deny({
+  update: function(userId, doc, fields, modifier) {
+    return userId !== doc.userId || !Meteor.user().isAdmin;
+  }
+});
