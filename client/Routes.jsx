@@ -34,6 +34,7 @@ Routes = React.createClass({
           <Route name='addCourse' component={CourseForm} path='/admin/addCourse'/>
           <Route name='addLesson' component={LessonForm} path='/admin/addLesson'/>
         </Route>
+        <Route name='print' component={PaymentFormatLayout} path='/print/:courseId/:barcodeId'/>
         <Route path='*' component={NotFound} />
       </Router>
     );

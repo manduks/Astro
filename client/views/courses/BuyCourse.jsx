@@ -1,20 +1,19 @@
 BuyCourse = React.createClass({
-  mixins: [
-    ReactRouter.History, React.addons.LinkedStateMixin, Utils
-  ],
+  mixins: [ReactRouter.History, React.addons.LinkedStateMixin, Utils],
   getInitialState() {
     return {
-      name  : 'Armando Gonzalez',
-      number: '4242424242424242',
-      month : 02,
-      year  : 2016,
-      cvc   : '232',
-      course: '',
-      procesando : false
+      name          : 'Armando Gonzalez',
+      number        : '4242424242424242',
+      month         : 02,
+      year          : 2016,
+      cvc           : '232',
+      course        : Session.get('currentCourse') ,
+      procesando    : false,
+      procesandoOxxo: false
     }
   },
   componentDidMount() {
-    if (!Session.get('currentCourse')) {
+    if (!this.state.course) {
       return this.history.pushState(null, '/app');
     }
   },
@@ -24,8 +23,31 @@ BuyCourse = React.createClass({
   handleChangeYear(newValue){
     this.setState({year: newValue});
   },
-  payWithOxxo() {
-    alert('Oxxo');
+  payWithOxxo(e) {
+    const self = this;
+    e.preventDefault();
+    if (this.state.procesandoOxxo) {
+      return;
+    }
+    this.setState({procesandoOxxo: true});
+    this.showOperationSpinner();
+    Meteor.call('payWithCash', this.state, function(error, result) {
+      self.setState({procesandoOxxo: false});
+      if (error) {
+        self.showAlert('error', 'No pudimos procesar la petición de pago, intentalo de nuevo ...');
+      } else {
+        self.hideOperationSpinner();
+        if (result.object === 'error'){
+          self.showAlert('error', result.message_to_purchaser);
+        } else {
+          self.barcodeId = result.payment_method.barcode;
+          self.showAlert('success', 'Formato generado exitosamente. Imprimir Formato', self.redirectToPrintFormat);
+        }
+      }
+    });
+  },
+  redirectToPrintFormat() {
+    this.history.pushState(null, '/print/' + this.state.course._id + '/' + this.barcodeId);
   },
   payWithCC(e) {
     e.preventDefault();
@@ -34,7 +56,6 @@ BuyCourse = React.createClass({
     }
     this.setState({procesando: true});
     Conekta.setPublishableKey('key_MxhSqdJdtsmBy64o');
-    this.state.course = Session.get('currentCourse');
     this.showOperationSpinner();
     Conekta.token.create(this.refs.CCForm, this.conektaSuccessResponseHandler, this.conektaErrorResponseHandler);
   },
@@ -64,7 +85,10 @@ BuyCourse = React.createClass({
     this.setState({procesando: false});
   },
   render() {
-    const course = Session.get('currentCourse'),
+    if (!this.state.course) {
+        return <Loader></Loader>
+    }
+    const course = this.state.course,
     valueLinkMonth = {
       value: this.state.month,
       requestChange: this.handleChangeMonth
