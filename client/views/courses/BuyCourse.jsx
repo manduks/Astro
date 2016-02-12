@@ -104,7 +104,7 @@ BuyCourse = React.createClass({
         <section className="astro_payment_container">
           <section className="astro_payment_left_container">
             <h1>COMPRAR CURSO</h1>
-            <span>${course.price}</span>
+            <span>${course.price}MXN</span>
             <div>{course.title + ', ' + course.description}</div>
           </section>
           <section className="astro_payment_right_container">
