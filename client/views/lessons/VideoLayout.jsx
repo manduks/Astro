@@ -20,6 +20,7 @@ VideoLayout = React.createClass({
   playVideo(){
     this.refs.astro_video_hero.style.display = 'none';
     this.refs.video.style.display = 'block';
+    this.refs.video.play();
   },
   onSortComments(value){
     this.setState({sortValue: value});
@@ -38,7 +39,7 @@ VideoLayout = React.createClass({
 
     return (
       <section className="astro_main_container">
-        <video className="astro_video" ref="video" controls>
+        <video ref="astro_video_element" className="astro_video" ref="video" controls>
           <source src={lesson.videoFile} type="video/mp4"/>
         </video>
         <div ref="astro_video_hero" className="astro_video_hero">

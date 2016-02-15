@@ -24,7 +24,7 @@ LessonsLayout = React.createClass({
           <aside className="astro_lesson_course_info">
             <div className="astro_lesson_course_info_container">
               <span className="astro_lesson_course_info_container_title">{course.title}</span>
-              <p>Aprende los principios basicos de esta asombrosa libreria</p>
+              <p>{course.description}</p>
               <span className="astro_lesson_course_info_container_duration">{this.getCourseDuration(lessons)}&nbsp;min</span>
             </div>
           </aside>
