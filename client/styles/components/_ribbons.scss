@@ -1,3 +1,7 @@
+$ribbon_color: $light;
+$text_color: $primary;
+/*$ribbon_color: $secondary;
+$text_color: $light;*/
 .ribbon-wrapper {
   width: 85px;
   height: 88px;
@@ -8,11 +12,10 @@
 }
 
 .ribbon {
-  font: 14px Gotham-Light;
   font: 14px Montserrat-Regular;
-  color: #FFF;
+  color: $text_color;
   text-align: center;
-  //text-shadow: rgba(255,255,255,0.5) 0px 1px 0px;
+  text-shadow: rgba(255,255,255,0.5) 0px 1px 0px;
   -webkit-transform: rotate(45deg);
   -moz-transform:    rotate(45deg);
   -ms-transform:     rotate(45deg);
@@ -22,21 +25,22 @@
   left: -5px;
   top: 15px;
   width: 120px;
-  background-color: $secondary;
-  background-image: -webkit-gradient(linear, left top, left bottom, from($secondary), to($secondary));
-  background-image: -webkit-linear-gradient(top, $secondary, $secondary);
-  background-image:    -moz-linear-gradient(top, $secondary, $secondary);
-  background-image:     -ms-linear-gradient(top, $secondary, $secondary);
-  background-image:      -o-linear-gradient(top, $secondary, $secondary);
-  color: #FFF;
+  background-color: $ribbon_color;
+  background-image: -webkit-gradient(linear, left top, left bottom, from($ribbon_color), to($ribbon_color));
+  background-image: -webkit-linear-gradient(top, $ribbon_color, $ribbon_color);
+  background-image:    -moz-linear-gradient(top, $ribbon_color, $ribbon_color);
+  background-image:     -ms-linear-gradient(top, $ribbon_color, $ribbon_color);
+  background-image:      -o-linear-gradient(top, $ribbon_color, $ribbon_color);
   -webkit-box-shadow: 0px 0px 3px rgba(0,0,0,0.3);
   -moz-box-shadow:    0px 0px 3px rgba(0,0,0,0.3);
   box-shadow:         0px 0px 3px rgba(0,0,0,0.3);
+  /*border-left: 3px solid darken($ribbon_color, 50);
+  border-right: 3px solid darken($ribbon_color, 50);*/
 }
 
 .ribbon:before, .ribbon:after {
   content: "";
-  border-top:   3px solid darken($secondary, 20);;
+  border-top:   3px solid darken($ribbon_color, 20);
   border-left:  3px solid transparent;
   border-right: 3px solid transparent;
   position:absolute;

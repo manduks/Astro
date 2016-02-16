@@ -25,12 +25,20 @@
         font-size: 20px;
         color: $dark;
         line-height: 24px;
+        margin-top: 5px;
       }
       .astro_lesson_course_info_container_duration{
         opacity: 0.9;
         font-size: 14px;
         color: $primary;
         line-height: 18px;
+      }
+      .astro_lesson_course_info_container_price{
+        //opacity: 0.6;
+        font-size: 20px;
+        color: $secondary;
+        line-height: 26px;
+        margin-top: 10px;
       }
     }
   }

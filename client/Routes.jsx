@@ -11,6 +11,7 @@ const browserHistory = history.createHistory();
 window.browserHistory = browserHistory;
 
 Routes = React.createClass({
+  mixins: [Utils],
   getInitialState: function() {
     return {};
   },

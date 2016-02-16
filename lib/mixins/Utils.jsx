@@ -72,9 +72,9 @@ Utils = {
    });
    return self.secondsToHms(duration);
  },
- ownsCourse() {
+ ownsCourse(currentCourse) {
    const courses = Session.get('currentUser').courses || [];
-   const currentCourse = Session.get('currentCourse');
+   currentCourse = currentCourse || Session.get('currentCourse');
    return courses.some(function (item) {
      return currentCourse._id === item;
    });
@@ -95,5 +95,12 @@ Utils = {
      allowEscapeKey    : true,
      confirmButtonText : 'Aceptar',
    }, callback);
+ },
+ formatPrice(course) {
+   var price = course.price ?  '$' + course.price + 'MXN': 'GRATIS';;
+   if (this.ownsCourse(course)) {
+     price  = 'Comprado';
+   }
+   return price;
  }
 }

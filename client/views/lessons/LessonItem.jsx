@@ -9,7 +9,7 @@ LessonItem = React.createClass({
     if (this.props.lesson.order == 1){
       return this.props.onLessonDoubleClick();
     }
-    if (this.ownsCourse() || Session.get('currentUser').isAdmin){
+    if (this.ownsCourse(Session.get('currentCourse')) || Session.get('currentUser').isAdmin){
       return this.props.onLessonDoubleClick();
     }
     this.history.pushState(null, '/buy');

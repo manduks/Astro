@@ -2,14 +2,15 @@ BuyCourse = React.createClass({
   mixins: [ReactRouter.History, React.addons.LinkedStateMixin, Utils],
   getInitialState() {
     return {
-      name          : 'Armando Gonzalez',
-      number        : '4242424242424242',
-      month         : 02,
-      year          : 2016,
-      cvc           : '232',
+      name          : '',
+      number        : '',
+      month         : null,
+      year          : null,
+      cvc           : '',
       course        : Session.get('currentCourse') ,
       procesando    : false,
-      procesandoOxxo: false
+      procesandoOxxo: false,
+      currentUser   : Session.get('currentUser')
     }
   },
   componentDidMount() {

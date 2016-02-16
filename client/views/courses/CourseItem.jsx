@@ -7,7 +7,7 @@ CourseItem = React.createClass({
   },
   render() {
     const self = this,
-          price = this.props.course.price ?  '$' + this.props.course.price + 'MXN': 'FREE';
+          price = this.formatPrice(this.props.course);
     let classes = 'astro_course_item_wrapper',
         lessons = (this.props.course && this.props.course.lessons) || [],
         duration = 0;
@@ -26,6 +26,8 @@ CourseItem = React.createClass({
           </section>
         </div>
         <div className="astro_course_item_img">
+          {/*<div className="ribbon-wrapper"><div className="ribbon">{price}</div></div>*/}
+          {/*<label className="price">{price}</label>*/}
           <div className="ribbon-wrapper"><div className="ribbon">{price}</div></div>
           <img src={this.props.course.image}></img>
         </div>
