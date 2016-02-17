@@ -73,7 +73,7 @@ Utils = {
    return self.secondsToHms(duration);
  },
  ownsCourse(currentCourse) {
-   const courses = Session.get('currentUser').courses || [];
+   const courses = (Session.get('currentUser') && Session.get('currentUser').courses) || [];
    currentCourse = currentCourse || Session.get('currentCourse');
    return courses.some(function (item) {
      return currentCourse._id === item;

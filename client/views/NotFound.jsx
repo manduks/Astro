@@ -2,8 +2,10 @@ NotFound = React.createClass({
   mixins : [ReactRouter.History],
   render() {
     return (
-      <div onClick={this.handleBack}>
-        Not Found
+      <div className="astro_404">
+        <h1>Esta página no existe :(</h1>
+        <label>404</label>
+        <Button size="large" text="REGRESAR" onClick={this.handleBack}/>
       </div>
     )
   },
