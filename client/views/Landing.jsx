@@ -13,6 +13,11 @@ Landing = React.createClass({
   onCourseDoubleClick(){
     this.handleLogin();
   },
+  componentDidMount() {
+    if (Meteor.userId()) {
+      this.history.pushState(null, '/app');
+    }
+  },
   render() {
     return (
         <main>
