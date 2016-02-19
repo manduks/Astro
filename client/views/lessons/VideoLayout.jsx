@@ -44,7 +44,7 @@ VideoLayout = React.createClass({
         </video>
         <div ref="astro_video_hero" className="astro_video_hero">
           <span onClick={this.playVideo}>
-            <img src="http://localhost:3000/img/play.png"></img>
+            <img src="http://107.170.231.59/img/play.png"></img>
           </span>
           <div>
             <h2>{lesson.title}</h2>

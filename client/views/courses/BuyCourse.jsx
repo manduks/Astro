@@ -160,7 +160,7 @@ BuyCourse = React.createClass({
                 <span>o pagar con</span>
               </h2>
               <section className="astro_payment_button" onClick={this.payWithOxxo}>
-                <img src="http://localhost:3000/img/oxxo.png" width="76px"/>
+                <img src="http://107.170.231.59/img/oxxo.png" width="76px"/>
               </section>
             </div>
           </section>

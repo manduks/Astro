@@ -4,7 +4,7 @@ Login = React.createClass({
     return (
       <div className="astro_login">
         <h2>CODETLAN</h2>
-        <img src="http://localhost:3000/img/logo-medium.png"></img>
+        <img src="http://107.170.231.59/img/logo-medium.png"></img>
         <h2>INICIAR SESIÓN</h2>
         <section className="github">
           <Button size="large" text="Github" onClick={this.loginWithGithub}/>

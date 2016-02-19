@@ -26,7 +26,7 @@ Landing = React.createClass({
                 <span className="astro_legend">APRENDE LAS MEJORES LIBRERÍAS</span>
                 <Button size="large" text="Entrar" onClick={this.handleLogin}/>
                 <div className="astro_techs">
-                  <img src="http://localhost:3000/img/techs.png" alt="liberías"></img>
+                  <img src="http://107.170.231.59/img/techs.png" alt="liberías"></img>
                 </div>
               </section>
             </header>

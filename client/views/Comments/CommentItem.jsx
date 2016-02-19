@@ -12,7 +12,7 @@ CommentItem = React.createClass({
         </div>
         <div className="astro_comment_item_wrapper_timestamps">
           <section>
-            <img src="http://localhost:3000/img/clock.png"></img>
+            <img src="http://107.170.231.59/img/clock.png"></img>
             <span>{moment(this.props.comment.createdAt).fromNow()}</span>
           </section>
         </div>
