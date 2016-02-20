@@ -3,7 +3,7 @@ CoursesList = React.createClass({
   getMeteorData () {
     var sub = Meteor.subscribe("courses");
     return {
-      courses       : Courses.find().fetch(),
+      courses       : Courses.find({},{sort: {createdAt: -1}}).fetch(),
       loadingCourses: !sub.ready()
     }
   },

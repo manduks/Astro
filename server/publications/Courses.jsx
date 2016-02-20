@@ -9,6 +9,7 @@ Meteor.methods({
     var id = data._id;
     delete data._id;
     data.deleted =  false;
+    data.createdAt = new Date();
     return Courses.update({_id : id},data,{upsert: true});
   },
   deleteCourse(data) {
