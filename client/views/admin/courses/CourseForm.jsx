@@ -13,7 +13,6 @@ CourseForm = React.createClass({
       imageFile    : course.imageFile,
       description  : course.description,
       price        : course.price,
-      paypalId     : course.paypalId,
       lessons      : course.lessons || []
     };
   },
@@ -40,13 +39,12 @@ CourseForm = React.createClass({
     e.preventDefault();
     self.showOperationSpinner();
     Meteor.call('addCourse', {
-      _id          : state._id,
-      title        : state.title.trim(),
-      description  : state.description.trim(),
-      price        : state.price.trim(),
-      image        : state.imageFile,
-      paypalId     : state.paypalId,
-      lessons      : state.lessons || []
+      _id        : state._id,
+      title      : state.title.trim(),
+      description: state.description.trim(),
+      price      : state.price.trim(),
+      image      : state.imageFile,
+      lessons    : state.lessons || []
     }, this.afterSaveCourse);
   },
   afterSaveCourse() {
@@ -71,9 +69,6 @@ CourseForm = React.createClass({
           </div>
           <div className="astro_form_component_content_textfield2">
             <input type="text" name="price" valueLink={this.linkState('price')} autoComplete="off" placeholder="Precio en pesos" required/>
-          </div>
-          <div className="astro_form_component_content_textfield2">
-            <input type="text" name="paypalId" valueLink={this.linkState('paypalId')} autoComplete="off" placeholder="Id de botton de paypal" required/>
           </div>
           <div className="astro_form_component_content_textfield2">
             <div className="file_input_wrapper">
