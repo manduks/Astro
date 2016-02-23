@@ -1,4 +1,5 @@
 Meteor.publish('courses', function () {
+    Meteor._sleepForMs(5000);
     return Courses.find({
       deleted: false
     });
