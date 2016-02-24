@@ -1,4 +1,7 @@
 CommentItem = React.createClass({
+  componentDidMount() {
+    linkifyElement(this.refs.commentText);
+  },
   render() {
     const user = this.props.comment.user;
     return (
@@ -8,7 +11,7 @@ CommentItem = React.createClass({
         </div>
         <div className="astro_comment_item_wrapper_info">
           <span>{user.name}</span>
-          <span>{this.props.comment.text}</span>
+          <span ref="commentText">{this.props.comment.text}</span>
         </div>
         <div className="astro_comment_item_wrapper_timestamps">
           <section>

@@ -6,7 +6,9 @@ LessonItem = React.createClass({
     }
   },
   onLessonDoubleClick() {
-    if (this.props.lesson.order == 1){
+    const freeCourse = !Number(Session.get('currentCourse').price);
+
+    if (this.props.lesson.order == 1 || freeCourse){
       return this.props.onLessonDoubleClick();
     }
     if (this.ownsCourse(Session.get('currentCourse')) || Session.get('currentUser').isAdmin){

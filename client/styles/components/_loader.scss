@@ -5,9 +5,17 @@
   height: 100vh;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+  blockquote{
+    margin-top: 30px;
+    font-family: Gotham-Book;
+    font-size: 24px;
+    line-height: 28px;
+    color: #CCC;
+  }
 }
 .spinner {
-  margin-top: -100px;
+  margin-top: -400px;
   width: 50px;
   height: 40px;
   text-align: center;

@@ -33,12 +33,12 @@ Commentform = React.createClass({
       return <Loader></Loader>
     }
     return (
-      <form className="astro_comments_form" onSubmit={this.addComment}>
+      <form className="astro_comments_form" onSubmit={this.addComment} >
         <div className="astro_comments_form_avatar">
           <img src={user.avatar}></img>
         </div>
         <div className="astro_comments_form_textfield">
-          <input type="text" valueLink={this.linkState('comment')} name="comment" required/>
+          <input type="text" valueLink={this.linkState('comment')} name="comment" autoComplete="off" required/>
         </div>
         <input type="submit" className="astro_button medium" value="Enviar"/>
       </form>
