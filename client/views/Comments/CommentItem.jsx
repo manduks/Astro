@@ -1,4 +1,7 @@
 CommentItem = React.createClass({
+  componentDidMount() {
+    linkifyElement(this.refs.commentText);
+  },
   render() {
     const user = this.props.comment.user;
     return (
