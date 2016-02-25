@@ -10,7 +10,7 @@ CourseForm = React.createClass({
     return {
       _id          : course._id,
       title        : course.title,
-      imageFile    : course.imageFile,
+      imageFile    : course.image,
       description  : course.description,
       price        : course.price,
       lessons      : course.lessons || []
@@ -38,6 +38,7 @@ CourseForm = React.createClass({
 
     e.preventDefault();
     self.showOperationSpinner();
+
     Meteor.call('addCourse', {
       _id        : state._id,
       title      : state.title.trim(),
@@ -50,6 +51,9 @@ CourseForm = React.createClass({
   afterSaveCourse() {
     this.hideOperationSpinner();
     this.history.pushState(null, '/admin');
+  },
+  componentDidMount(){
+    this.refs.imageInput.required = !this.state.imageFile;
   },
   render() {
     let file = this.data.files[this.data.files.length - 1];
@@ -73,7 +77,7 @@ CourseForm = React.createClass({
           <div className="astro_form_component_content_textfield2">
             <div className="file_input_wrapper">
               <div className="file_upload_label">{imageInputLabel}</div>
-              <input type="file" name="upload" ref="imageInput" onChange={this.uploadCourseImageChange} className="upload_field" title="Elegir imagen" required/>
+              <input type="file" name="uploadImage" ref="imageInput" onChange={this.uploadCourseImageChange} className="upload_field" title="Elegir imagen" defaultValue={this.state.imageFile} />
             </div>
           </div>
           <input type="submit" className="astro_button large" value= "Guardar"/>
