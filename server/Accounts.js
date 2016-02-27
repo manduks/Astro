@@ -1,14 +1,14 @@
 ServiceConfiguration.configurations.upsert({service: 'github'}, {
     $set: {
-      clientId: '74ce1baf79b49d4f5c9a',
-      secret: 'c8049d803d0b875cbf4a2c5dc3e6023c7622a93c'
+      clientId: '1dac2fa90c19816cf647',
+      secret: 'ff8b5ae3f0f0473a856cba4abc63fcc5f2c62a82'
     }
 });
 
 ServiceConfiguration.configurations.upsert({service: 'twitter'}, {
     $set: {
-      consumerKey: 'jlTNgxWBZymhSW77rlDyzwBXc',
-      secret: 'tTuWy779X3dqeq3DkCj2Yj1ZCX0Zedbl1IwJr00OUe7A1VhSNj'
+      consumerKey: '30VyXTMltNEJiMgqME6lTxfbP',
+      secret: 'FogqBkeHqOQaaVI1436CPTZRTfXGS97bBSW93bPUhawInYLKrt'
     }
 });
 
