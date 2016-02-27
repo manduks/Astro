@@ -1,0 +1,41 @@
+.tos {
+  //background-color: lighten(#555, 60);
+  display: flex;
+  align-items: center;
+  //justify-content: center;
+  height: 100vh;
+  width: 100%;
+  flex-direction: column;
+  //color: $secondary;
+  font-family: Gotham-Book;
+  //padding: 50px;
+  overflow: scroll;
+
+  h1 {
+    font-size: 40px;
+    line-height: 57px;
+    width: 960px;
+    margin: 10px;
+  }
+  h2 {
+    font-size: 30px;
+    line-height: 47px;
+    text-align: left;
+    float: left;
+    width: 960px;
+    margin-top: 25px;
+    margin-bottom: 10px;
+  }
+  p{
+    font-size: 20px;
+    line-height: 30px;
+    width: 960px;
+  }
+  ol{
+    list-style-type:circle;
+    width: 860px;
+    li {
+      line-height: 27px;
+    }
+  }
+}
