@@ -5,7 +5,7 @@ TermsOfService = React.createClass({
       <div className="tos">
         <h1>Términos y condiciones del sitio</h1>
         <p>Gracias por usar codetlan.com. Al usar nuestro sitio usted esta aceptando estos términos y condiciones. Por favor leerlos cuidadosamente.</p>
-        <h2>Registro. Contraseña</h2>
+        <h2>Registro y Contraseña</h2>
         <p>
           El titular se reserva el derecho de solicitar el registro del Visitante para la
           Página Web, toda o parte de ella, que previamente haya sido de libre acceso y, en
