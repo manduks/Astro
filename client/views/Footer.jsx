@@ -12,7 +12,7 @@ Footer = React.createClass({
           </div>
           <div>
             <img src="http://localhost:3000/img/twitter.png" onClick={this.onClickTwitter}></img>
-            <span>© 2015 All rights reserved.</span>
+            <span>© 2016 Todos los derechos reservados.</span>
           </div>
         </section>
       </div>
