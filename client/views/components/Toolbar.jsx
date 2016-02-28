@@ -11,9 +11,6 @@ Toolbar = React.createClass({
   onProfile () {
     this.history.pushState(null,'/profile');
   },
-  onTOS () {
-    this.history.pushState(null,'/tos');
-  },
   onAppIndex (){
     this.history.pushState(null, '/app');
   },
@@ -38,7 +35,6 @@ Toolbar = React.createClass({
                   <ul>
                     <li onClick={this.onProfile}>Perfil</li>
                     {addAdminMenu(this.props.isAdmin)}
-                    <li onClick={this.onTOS}>Términos y condiciones</li>
                     <li onClick={this.onLogout}>Cerrar Sesión</li>
                   </ul>
               </span>
