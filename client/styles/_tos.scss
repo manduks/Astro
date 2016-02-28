@@ -1,21 +1,26 @@
+.astro-tos{
+  color: darken($light, 30);
+  font-family: Gotham-Book;
+  font-size: 12px;
+  line-height: 14px;
+  margin-top: 15px;
+  margin-left: -15px;
+  cursor: pointer;
+}
 .tos {
-  //background-color: lighten(#555, 60);
   display: flex;
   align-items: center;
-  //justify-content: center;
-  height: 100vh;
+  height: 92vh;
   width: 100%;
   flex-direction: column;
-  //color: $secondary;
   font-family: Gotham-Book;
-  //padding: 50px;
   overflow: scroll;
-
+  margin-top: 60px;
   h1 {
     font-size: 40px;
     line-height: 57px;
     width: 960px;
-    margin: 10px;
+    margin-top: 10px;
   }
   h2 {
     font-size: 30px;

@@ -1,5 +1,5 @@
 Profile = React.createClass({
-  mixins: [ReactMeteorData, Utils],
+  mixins: [ReactMeteorData, Utils, ReactRouter.History],
   getMeteorData () {
     var sub = Meteor.subscribe("users");
     return {
@@ -20,6 +20,9 @@ Profile = React.createClass({
         });
     }
   },
+  onTOS () {
+    this.history.pushState(null,'/tos');
+  },
   render() {
     var user = this.data.currentUser;
     if (this.data.usersLoader) {
@@ -39,6 +42,7 @@ Profile = React.createClass({
             </div>
             <input type="submit" className="astro_button large margin_top" value= "Guardar"/>
         </form>
+        <span className="astro-tos" onClick={this.onTOS}>Términos y condiciones</span>
       </div>
     )
   }
