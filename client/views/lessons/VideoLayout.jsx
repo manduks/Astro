@@ -35,7 +35,7 @@ VideoLayout = React.createClass({
         return <Loader></Loader>
     }
 
-    numComments = this.data.comments.length + ' COMMENTS';
+    numComments = this.data.comments.length + ' COMENTARIOS';
 
     return (
       <section className="astro_main_container">

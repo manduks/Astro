@@ -11,8 +11,8 @@ Footer = React.createClass({
             <span>CODETLAN</span>
           </div>
           <div>
-            <img src="http://107.170.231.59/img/twitter.png" onClick={this.onClickTwitter}></img>
-            <span>© 2015 All rights reserved.</span>
+            <img src="http://localhost:3000/img/twitter.png" onClick={this.onClickTwitter}></img>
+            <span>© 2016 Todos los derechos reservados.</span>
           </div>
         </section>
       </div>
