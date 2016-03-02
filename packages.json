@@ -1,4 +1,5 @@
 {
   "conekta": "1.5.0",
-  "fibers" : "1.0.8"
+  "fibers" : "1.0.8",
+  "body-parser": "1.15.0"
 }

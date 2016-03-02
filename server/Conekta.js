@@ -52,7 +52,7 @@ Meteor.methods({
       description: course.title,
       amount: course.price * 100,
       currency: 'MXN',
-      reference_id: course._id,
+      reference_id: course._id + '-' + Meteor.userId(),
       cash: {
         type      : 'oxxo',
         expires_at: new Date(expiresAt)
@@ -69,7 +69,6 @@ Meteor.methods({
         console.log(err);
         return future["return"](err)
       }
-      console.log(res.toObject());
       return future["return"](res.toObject())
     });
     return future.wait();
