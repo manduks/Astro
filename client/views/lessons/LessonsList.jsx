@@ -7,6 +7,9 @@ LessonsList = React.createClass({
   },
   onLessonClick(lesson) {
     Session.set('currentLesson', lesson);
+    if (!this.props.isAdmin) {
+      this.onLessonDoubleClick(lesson);
+    }
   },
   render() {
     return (

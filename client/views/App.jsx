@@ -9,7 +9,7 @@ App = React.createClass({
   render() {
     return (
       <section className="astro_main_container">
-        <CoursesList onCourseDoubleClick={this.onCourseDoubleClick}/>
+        <CoursesList onCourseDoubleClick={this.onCourseDoubleClick} onCourseClick={this.onCourseDoubleClick}/>
       </section>
     )
   }
