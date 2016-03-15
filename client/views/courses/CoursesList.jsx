@@ -13,6 +13,7 @@ CoursesList = React.createClass({
   },
   onCourseClick(course) {
     Session.set('currentCourse', course);
+    return this.props.onCourseClick && this.props.onCourseClick();
   },
   render() {
     const courses = this.data.courses || [];

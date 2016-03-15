@@ -29,3 +29,6 @@ meteorhacks:npm
 npm-container
 ls3271:meteor-linkify
 rzymek:moment-locale-es
+meteorhacks:picker
+email
+cunneen:mailgun
